@@ -1,0 +1,4 @@
+kicad/*/*-cache*
+*.kicad_prl
+*/*-backups/*
+_autosave-*
