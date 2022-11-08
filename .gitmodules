@@ -1,0 +1,3 @@
+[submodule "firmware/modules/setup-scripts"]
+	path = firmware/modules/setup-scripts
+	url = git@github.com:CoolNamesAllTaken/setup-scripts.git

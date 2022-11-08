@@ -1,0 +1,36 @@
+* C:\git-checkouts\scbs\ltspice\diff_amp_sim_offset_tran.asc
+V1 5v 0 5
+Q1 N002 N003 hello 0 2n3904
+R1 5v N002 1k
+Q2 up N002 5v 0 2n2907
+R2 up 0 1k
+R5 up dn 1
+R6 dn 0 22.5
+R7 up N006 500k
+R8 dn N007 500k
+XU2 N006 N007 5v 0 N008 level2 Avol=1Meg GBW=10Meg Slew=10Meg Ilimit=25m Rail=0 Vos=0 En=0 Enk=0 In=0 Ink=0 Rin=500Meg
+R9 N007 N008 8.25Meg
+R10 N006 0 8.25Meg
+V2 cmd 0 SINE(2.25 2.25 100)
+R12 N002 N002 100
+XU1 N005 N001 5v 0 N003 level2 Avol=10k GBW=10Meg Slew=18Meg Ilimit=25m Rail=0 Vos=0 En=0 Enk=0 In=0 Ink=0 Rin=500Meg
+C1 dn 0 1µ
+R3 N004 cmd 10k
+R4 0 N004 2k
+R13 N001 dn 10k
+R14 hello N001 2k
+R11 hello 0 1
+C3 hello N001 0.1µ
+C4 N004 0 0.1µ
+V3 0 0 PULSE(0 4.5 0 1n 1n 50m 100m)
+R15 N008 csense 10k
+C2 csense 0 10n
+V4 N005 N004 3m
+.model NPN NPN
+.model PNP PNP
+.lib C:\Users\jkail\OneDrive\Documents\LTspiceXVII\lib\cmp\standard.bjt
+* Q1 inverts ouptut polarity\nand provides base drive for
+.tran 0 100m 0 1u
+.lib UniversalOpAmp2.lib
+.backanno
+.end
