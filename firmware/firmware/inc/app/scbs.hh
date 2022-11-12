@@ -13,10 +13,10 @@ public:
     static const uint16_t kMaxUARTBufLen = 200;
 
     typedef struct {
-        uart_inst_t * uart_id;
+        uart_inst_t * uart_id = uart1;
         uint16_t uart_baud = 9600;
-        uint16_t uart_tx_pin;
-        uint16_t uart_rx_pin;
+        uint16_t uart_tx_pin = 4;
+        uint16_t uart_rx_pin = 5;
         uint16_t uart_data_bits = 8;
         uint16_t uart_stop_bits = 1;
         uart_parity_t uart_parity = UART_PARITY_NONE;
@@ -36,7 +36,7 @@ private:
     void MWRPacketHandler(MWRPacket packet_in);
 
     void FlushUARTBuf();
-    void AppendCharToUARTBuf();
+    void AppendCharToUARTBuf(char new_char);
 
     template <class PacketType>
     void TransmitPacket(PacketType packet);
@@ -48,6 +48,6 @@ private:
     uint16_t uart_rx_buf_len_ = 0;
 
     uint16_t cell_id_;
-}
+};
 
 #endif /* _SCBS_HH_ */

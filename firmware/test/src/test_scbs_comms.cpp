@@ -25,6 +25,14 @@ TEST(BSPacketChecksum, BSSRD) {
 	ASSERT_EQ(expected_checksum, test_packet.CalculateChecksum());
 }
 
+TEST(BSPacketChecksum, BSMRD) {
+	char str_buf[BSPacket::kMaxPacketLen] = "$BSMRD,843,hi,my,name,is,frank,and,"
+	"I,work,in,a,button,factory,yessiree,I,got,a,wife,three,kids,and*58";
+	BSPacket test_packet = BSPacket(str_buf);
+	uint16_t expected_checksum = strtoul("58", NULL, 16);
+	ASSERT_EQ(expected_checksum, test_packet.CalculateChecksum());
+}
+
 TEST(BSPacketIsValid, ValidPacket) {
 	char str_buf[BSPacket::kMaxPacketLen] = "$BSSRD,53,0285*5D";
 	BSPacket test_packet = BSPacket(str_buf);
@@ -135,4 +143,131 @@ TEST(MWRPacketConstructor, StringTooLong) {
 	char str_buf[BSPacket::kMaxPacketLen];
 	packet.ToString(str_buf);
 	ASSERT_STREQ(str_buf, "$BSMWR,0,*69");
+}
+
+TEST(MRDPacketConstructor, FromValues) {
+	char values_in[MRDPacket::kMaxNumValues][BSPacket::kMaxPacketFieldLen] = {"beefcakes", "twelve", "toodles"};
+	MRDPacket packet = MRDPacket(0x843u, values_in, 3);
+	ASSERT_EQ(packet.reg_addr, 0x843u);
+	ASSERT_EQ(packet.num_values, 3);
+	ASSERT_STREQ(packet.values[0], "beefcakes");
+	ASSERT_STREQ(packet.values[1], "twelve");
+	ASSERT_STREQ(packet.values[2], "toodles");
+}
+
+TEST(MRDPacketConstructor, NoValues) {
+	char values_in[][BSPacket::kMaxPacketFieldLen] = {
+	};
+	MRDPacket packet = MRDPacket(0x843u, values_in, 3);
+	ASSERT_EQ(packet.reg_addr, 0x843u);
+	ASSERT_EQ(packet.num_values, 3);
+	ASSERT_STREQ(packet.values[0], "");
+	ASSERT_STREQ(packet.values[1], "");
+	ASSERT_STREQ(packet.values[2], "");
+}
+
+TEST(MRDPacketToString, ValuesTooLong) {
+	char values_in[][BSPacket::kMaxPacketFieldLen] = {
+		"thisisaverylongstrn",
+		"thisisaverylongstrn",
+		"thisisaverylongstrn",
+		"thisisaverylongstrn",
+		"thisisaverylongstrn",
+		"thisisaverylongstrn",
+		"thisisaverylongstrn",
+		"thisisaverylongstrn",
+		"thisisaverylongstrn",
+		"thisisaverylongstrn",
+		"thisisaverylongstrn",
+		"thisisaverylongstrn",
+		"thisisaverylongstrn",
+		"thisisaverylongstrn",
+		"thisisaverylongstrn",
+		"thisisaverylongstrn",
+		"thisisaverylongstrn",
+		"thisisaverylongstrn",
+		"thisisaverylongstrn",
+		"thisisaverylongstrn"
+	};
+	MRDPacket packet = MRDPacket(0x843u, values_in, 20);
+	char str_buf[400];
+	packet.ToString(str_buf);
+	ASSERT_STREQ(str_buf, "$BSMRD,843,thisisaverylongstrn,thisisaverylongstrn,"
+		"thisisaverylongstrn,thisisaverylongstrn,thisisaverylongstrn,thisisave"
+		"rylongstrn,thisisaverylongstrn,thisisaverylongstrn,thisisaverylongstr"
+		"n*01");
+}
+
+TEST(MRDPacketConstructor, FromStringBasic) {
+	char str_buf[BSPacket::kMaxPacketLen] = "$BSMRD,843,hi,my,name,is,frank,and,"
+	"I,work,in,a,button,factory,yessiree,I,got,a,wife,three,kids,and*58";
+	MRDPacket packet = MRDPacket(str_buf);
+	ASSERT_TRUE(packet.IsValid());
+	ASSERT_EQ(packet.reg_addr, 0x843u);
+	ASSERT_EQ(packet.num_values, 20);
+	ASSERT_STREQ(packet.values[0], "hi");
+	ASSERT_STREQ(packet.values[1], "my");
+	ASSERT_STREQ(packet.values[2], "name");
+	ASSERT_STREQ(packet.values[3], "is");
+	ASSERT_STREQ(packet.values[4], "frank");
+	ASSERT_STREQ(packet.values[5], "and");
+	ASSERT_STREQ(packet.values[6], "I");
+	ASSERT_STREQ(packet.values[7], "work");
+	ASSERT_STREQ(packet.values[8], "in");
+	ASSERT_STREQ(packet.values[9], "a");
+	ASSERT_STREQ(packet.values[10], "button");
+	ASSERT_STREQ(packet.values[11], "factory");
+	ASSERT_STREQ(packet.values[12], "yessiree");
+	ASSERT_STREQ(packet.values[13], "I");
+	ASSERT_STREQ(packet.values[14], "got");
+	ASSERT_STREQ(packet.values[15], "a");
+	ASSERT_STREQ(packet.values[16], "wife");
+	ASSERT_STREQ(packet.values[17], "three");
+	ASSERT_STREQ(packet.values[18], "kids");
+	ASSERT_STREQ(packet.values[19], "and");
+}
+
+TEST(MRDPacketConstructor, FromStringTooMany) {
+	char str_buf[BSPacket::kMaxPacketLen] = "$BSMRD,843,hi,my,name,is,frank,and,"
+	"I,work,in,a,button,factory,yessiree,I,got,a,wife,three,kids,and,a,family*2F";
+	MRDPacket packet = MRDPacket(str_buf);
+	ASSERT_FALSE(packet.IsValid());
+	ASSERT_EQ(packet.reg_addr, 0x843u); // ok, gets to this before failing out
+	ASSERT_EQ(packet.num_values, 20); // should rail to kMaxNumValues
+}
+
+TEST(MRDPacketConstructor, FromStringInvalid) {
+	char str_buf[BSPacket::kMaxPacketLen] = "$BSMRD,843,hi,my,name,is,frank,and,"
+	"I,work,in,a,button,factory,yessiree,I,got,a,wife,three,kids,and,a,family*33";
+	MRDPacket packet = MRDPacket(str_buf);
+	ASSERT_FALSE(packet.IsValid());
+	ASSERT_EQ(packet.reg_addr, 0x00u);
+	ASSERT_EQ(packet.num_values, 0);
+	for (uint16_t i = 0; i < MRDPacket::kMaxNumValues; i++) {
+		ASSERT_STREQ(packet.values[i], "");
+	}
+}
+
+TEST(MRDPacketConstructor, FromStringLong) {
+	char str_buf[400] = "$BSMRD,843,thisisaverylongstrn,thisisaverylongstrn,this"
+		"isaverylongstrn,thisisaverylongstrn,thisisaverylongstrn,thisisaverylong"
+		"strn,thisisaverylongstrn,thisisaverylongstrn,thisisaverylongstrn*01";
+	MRDPacket packet = MRDPacket(str_buf);
+	ASSERT_TRUE(packet.IsValid());
+	ASSERT_EQ(packet.reg_addr, 0x843u);
+	ASSERT_EQ(packet.num_values, 9);
+	for (uint16_t i = 0; i < 9; i++) {
+		ASSERT_STREQ(packet.values[i], "thisisaverylongstrn");
+	}
+}
+
+TEST(MRDPacketConstructor, FromStringTooLong) {
+	char str_buf[400] = "$BSMRD,843,thisisaverylongstrn,thisisaverylongstrn,this"
+		"isaverylongstrn,thisisaverylongstrn,thisisaverylongstrn,thisisaverylong"
+		"strn,thisisaverylongstrn,thisisaverylongstrn,thisisaverylongstrn,thisis"
+		"averylongstrn*01";
+	MRDPacket packet = MRDPacket(str_buf);
+	ASSERT_FALSE(packet.IsValid());
+	ASSERT_EQ(packet.reg_addr, 0x00u);
+	ASSERT_EQ(packet.num_values, 0);
 }

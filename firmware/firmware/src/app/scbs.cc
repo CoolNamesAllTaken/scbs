@@ -39,8 +39,9 @@ void SCBS::Update() {
         BSPacket packet = BSPacket(uart_rx_buf_);
         if (packet.IsValid()) {
             printf("SCBS::Update(): Packet is valid!\r\n");
-            switch(packet.GetPacketType) {
+            switch(packet.GetPacketType()) {
                 case BSPacket::DIS:
+                    DISPacketHandler(DISPacket(uart_rx_buf_));
                     break;
                 case BSPacket::MRD:
                     break;
@@ -53,19 +54,14 @@ void SCBS::Update() {
                 case BSPacket::SRS:
                     break;
                 default:
-                    printf("SCBS::Update():     Unrecognized packet type.\r\n")
+                    printf("SCBS::Update():     Unrecognized packet type.\r\n");
             }
-            if (packet.GetPacketType() == BSPacket::DIS) {
-                DISPacketHandler(DISPacket(uart_rx_buf_));
-            } /*else if (packet.GetPacketType() == BSPacket::MRD) {
-                MRDPacketHandler(MRDPacket(uart_rx_buf_, uart_rx_buf_len));
-            }*/
         } else {
             printf("SCBS::Update(): Packet is invalid.\r\n");
         }
         FlushUARTBuf();
         
-        gpio_put(config_.config_.led_pin, 0);
+        gpio_put(config_.led_pin, 0);
     }
     
     
@@ -86,11 +82,15 @@ void SCBS::DISPacketHandler(DISPacket packet_in) {
     if (packet_in.IsValid()) {
         printf("SCBS::DISPacketHandler: Formed a valid DIS packet!\r\n");
         cell_id_ = packet_in.last_cell_id + 1;
-        DISPacket packet_out = DISPacket(cell_id);
+        DISPacket packet_out = DISPacket(cell_id_);
         TransmitPacket(packet_out);
     } else {
         printf("SCBS::DISPacketHandler: Formed a DIS packet but it wasn't valid!\r\n");
     }
+}
+
+void SCBS::MRDPacketHandler(MRDPacket packet_in) {
+    
 }
 
 void SCBS::MRDPacketHandler(MRDPacket packet_in) {
@@ -127,7 +127,7 @@ uint16_t SCBS::ReceivePacket() {
             AppendCharToUARTBuf(new_char);
             printf("SCBS::ReceivePacket(): Received sentence %s", uart_rx_buf_);
             return strlen(uart_rx_buf_);
-        } else if (uart_rx_buf_len >= kMaxUARTBufLen) {
+        } else if (uart_rx_buf_len_ >= kMaxUARTBufLen) {
             // String too long! Abort.
             printf("SCBS::ReceivePacket(): String too long! Aborting.\r\n");
             FlushUARTBuf();

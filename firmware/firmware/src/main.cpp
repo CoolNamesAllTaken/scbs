@@ -9,7 +9,7 @@
 // #include "geeps_gui.hh"
 // #include "gui_bitmaps.hh"
 
-SCBS * battery_sim;
+SCBS * scbs = NULL;
 
 // #define COMMS_UART_ID         uart1
 // #define COMMS_UART_BAUD       9600
@@ -103,24 +103,28 @@ SCBS * battery_sim;
 
 int main() {
     bi_decl(bi_program_description("This is a test binary."));
-    bi_decl(bi_1pin_with_name(LED_PIN, "On-board LED"));
+    // bi_decl(bi_1pin_with_name(LED_PIN, "On-board LED"));
 
     stdio_init_all();
 
     
 
     puts("Hi hello starting program.\r\n");
-    gpio_put(LED_PIN, 1);
+    SCBS::SCBSConfig_t scbs_config;
+    scbs = new SCBS(scbs_config);
+    scbs->Init();
+    // gpio_put(LED_PIN, 1);
 
     // InitUART();
     // FlushUARTBuf();
 
     while (true) {
-        sleep_ms(100);
-        gpio_put(LED_PIN, 1);
-        sleep_ms(100);
-        gpio_put(LED_PIN, 0);
-        ReceivePacket();
+        // sleep_ms(100);
+        // gpio_put(LED_PIN, 1);
+        // sleep_ms(100);
+        // gpio_put(LED_PIN, 0);
+        scbs->Update();
+        // ReceivePacket();
         // uart_putc(COMMS_UART_ID, 'a');
     }
 }

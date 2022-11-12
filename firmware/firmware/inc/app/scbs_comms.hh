@@ -88,7 +88,7 @@ class MRDPacket : public BSPacket {
 public:
     static const uint16_t kMaxNumValues = 20;
 
-    MRDPacket(uint32_t reg_addr_in, char value_in[kMaxPacketFieldLen]);
+    MRDPacket(uint32_t reg_addr_in, char values_in[][kMaxPacketFieldLen], uint16_t num_values_in);
     MRDPacket(char from_str_buf[kMaxPacketLen]);
 
     void FromString(char from_str_buf[kMaxPacketLen]);
@@ -96,6 +96,7 @@ public:
 
     uint32_t reg_addr = 0x00u;
     char values[kMaxNumValues][kMaxPacketFieldLen];
+    uint16_t num_values;
 };
 
 #endif /* _SCBS_COMMS_HH_ */

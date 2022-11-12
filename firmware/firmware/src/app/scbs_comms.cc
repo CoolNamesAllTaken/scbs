@@ -252,7 +252,7 @@ void MWRPacket::FromString(char from_str_buf[kMaxPacketLen]) {
 
     char * value_str = strtok(NULL, SCBS_PACKET_DELIM);
     char * end_token_ptr = strchr(value_str, '*');
-    strncpy(value, value_str, MIN(end_token_ptr - value_str, kMaxPacketFieldLen));
+    strncpy(value, value_str, MIN(end_token_ptr - value_str, kMaxPacketFieldLen-1));
 
     is_valid_ = true; // Got here without aborting, good enough!
 }
@@ -267,6 +267,90 @@ uint16_t MWRPacket::ToString(char to_str_buf[kMaxPacketLen]) {
         reg_addr,
         value
     );
+    BSPacket::PacketizeContents(contents_str, to_str_buf); // Send to parent class for header and tail.
+    return strlen(packet_str_);
+}
+
+/** MRD Packet **/
+
+MRDPacket::MRDPacket(uint32_t reg_addr_in, char values_in[][kMaxPacketFieldLen], uint16_t num_values_in) {
+    packet_type_ = MRD;
+
+    // Populate values.
+    reg_addr = reg_addr_in;
+    for (uint16_t i = 0; i < num_values_in; i++) {
+        memset(values[i], '\0', kMaxPacketFieldLen);
+        strncpy(values[i], values_in[i], kMaxPacketFieldLen-1); // make sure to always end with '\0'
+    }
+    num_values = num_values_in;
+
+    // Populate packet_str_.
+    ToString(NULL);
+    printf("%s", packet_str_);
+}
+
+MRDPacket::MRDPacket(char from_str_buf[kMaxPacketLen]) {
+    packet_type_ = MRD;
+    FromString(from_str_buf);
+}
+
+void MRDPacket::FromString(char from_str_buf[kMaxPacketLen]) {
+    for (uint16_t i = 0; i < kMaxNumValues; i++) {
+        memset(values[i], '\0', kMaxPacketFieldLen);
+    }
+    num_values = 0;
+
+    BSPacket::FromString(from_str_buf);
+    if (!is_valid_) {
+        printf("MRDPacket::FromString(): Failed due to invalid packet.\r\n");
+        return;
+    }
+
+    is_valid_ = false; // set false again so if something MRD specific goes wrong it shows up
+    char strtok_buf[kMaxPacketLen];
+
+    strncpy(strtok_buf, from_str_buf, kMaxPacketLen); // strtok modifies the input string, be safe!
+    // Look for end_token_ptr first since we don't know when we'll see it (variable number of values).
+    char * end_token_ptr = strchr(strtok_buf, '*'); // don't guard against NULL since already done in CalculateChecksum()
+    char * header_str = strtok(strtok_buf, SCBS_PACKET_DELIM);
+    if (strcmp(header_str, "$BSMRD")) {
+        // Header is wrong (different packet type).
+        printf("MRDPacket::FromString(): Failed due to invalid header, expected $BSMRD but got %s.\r\n", header_str);
+        return;
+    }
+
+    char * reg_addr_str = strtok(NULL, SCBS_PACKET_DELIM);
+    reg_addr = (uint16_t)strtoul(reg_addr_str, NULL, SCBS_ADDR_BASE);
+
+    char * value_str = strtok(NULL, SCBS_PACKET_DELIM);
+    while(value_str != NULL) {
+        if (num_values >= kMaxNumValues) {
+            printf("MRDPacket::FromString: Tried to store too many values, got to %d but max is %d.\r\n", num_values+1, kMaxNumValues);
+            return; // too many values to store!
+        }
+        strncpy(values[num_values], value_str, MIN(end_token_ptr - value_str, kMaxPacketFieldLen-1));
+        num_values++;
+        value_str = strtok(NULL, SCBS_PACKET_DELIM);
+    }
+    
+    is_valid_ = true; // Got here without aborting, good enough!
+}
+
+uint16_t MRDPacket::ToString(char to_str_buf[kMaxPacketLen]) {
+    char contents_str[kMaxPacketContentsLen];
+    snprintf(contents_str, kMaxPacketContentsLen, "%x",
+        reg_addr
+    );
+    for (uint16_t i = 0; i < num_values; i++) {
+        if (strlen(contents_str) >= kMaxPacketContentsLen-kMaxPacketFieldLen) {
+            // use >= since leaving room for delimiters
+            printf("MRDPacket::ToString: Ran out of room for values!\r\n");
+            break;
+        }
+        char value_str[kMaxPacketFieldLen];
+        snprintf(value_str, kMaxPacketFieldLen+1, ",%s", values[i]);
+        strncat(contents_str, value_str, kMaxPacketFieldLen+1); // +1 for delimiter
+    }
     BSPacket::PacketizeContents(contents_str, to_str_buf); // Send to parent class for header and tail.
     return strlen(packet_str_);
 }
