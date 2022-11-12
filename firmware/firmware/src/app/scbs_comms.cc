@@ -286,7 +286,6 @@ MRDPacket::MRDPacket(uint32_t reg_addr_in, char values_in[][kMaxPacketFieldLen],
 
     // Populate packet_str_.
     ToString(NULL);
-    printf("%s", packet_str_);
 }
 
 MRDPacket::MRDPacket(char from_str_buf[kMaxPacketLen]) {

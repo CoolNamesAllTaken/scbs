@@ -1,0 +1,1486 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<export version="E">
+  <design>
+    <source>C:\git-checkouts\scbs\kicad\scbs_demo\scbs_demo.kicad_sch</source>
+    <date>11/10/2022 8:58:13 PM</date>
+    <tool>Eeschema (6.0.7)</tool>
+    <sheet number="1" name="/" tstamps="/">
+      <title_block>
+        <title>Single Cell Battery Simulator Pico Demo Board</title>
+        <company>Pants for Birds</company>
+        <rev>A</rev>
+        <date>2022-11-06</date>
+        <source>scbs_demo.kicad_sch</source>
+        <comment number="1" value="John McNelly - jkailimcnelly@gmail.com"/>
+        <comment number="2" value=""/>
+        <comment number="3" value=""/>
+        <comment number="4" value=""/>
+        <comment number="5" value=""/>
+        <comment number="6" value=""/>
+        <comment number="7" value=""/>
+        <comment number="8" value=""/>
+        <comment number="9" value=""/>
+      </title_block>
+    </sheet>
+  </design>
+  <components>
+    <comp ref="C1">
+      <value>0.1uF</value>
+      <footprint>Capacitor_SMD:C_0805_2012Metric</footprint>
+      <fields>
+        <field name="Standard Cost">0.10</field>
+      </fields>
+      <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
+      <property name="Standard Cost" value="0.10"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="scbs_demo.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>501c76a6-d2b9-4bd2-89b6-22fe1a20bdf8</tstamps>
+    </comp>
+    <comp ref="C2">
+      <value>DNP</value>
+      <footprint>Capacitor_SMD:C_0805_2012Metric</footprint>
+      <fields>
+        <field name="Standard Cost">0.10</field>
+      </fields>
+      <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
+      <property name="Standard Cost" value="0.10"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="scbs_demo.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>ea657372-77a3-4b71-8e5f-768a7eedd395</tstamps>
+    </comp>
+    <comp ref="C3">
+      <value>1uF</value>
+      <footprint>Capacitor_SMD:C_0805_2012Metric</footprint>
+      <fields>
+        <field name="Standard Cost">0.10</field>
+      </fields>
+      <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
+      <property name="Standard Cost" value="0.10"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="scbs_demo.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>81879832-ef3a-4d07-bc20-d7739a2f0b44</tstamps>
+    </comp>
+    <comp ref="C4">
+      <value>0.1uF</value>
+      <footprint>Capacitor_SMD:C_0805_2012Metric</footprint>
+      <fields>
+        <field name="Standard Cost">0.10</field>
+      </fields>
+      <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
+      <property name="Standard Cost" value="0.10"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="scbs_demo.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>e917e153-2dcc-4351-b475-f8db1dca8687</tstamps>
+    </comp>
+    <comp ref="C5">
+      <value>DNP</value>
+      <footprint>Capacitor_SMD:C_0805_2012Metric</footprint>
+      <fields>
+        <field name="Standard Cost">0.10</field>
+      </fields>
+      <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
+      <property name="Standard Cost" value="0.10"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="scbs_demo.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>7c5fb92e-70ff-4ba2-a368-e34fbd47f270</tstamps>
+    </comp>
+    <comp ref="C6">
+      <value>DNP</value>
+      <footprint>Capacitor_SMD:C_0805_2012Metric</footprint>
+      <fields>
+        <field name="Standard Cost">0.10</field>
+      </fields>
+      <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
+      <property name="Standard Cost" value="0.10"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="scbs_demo.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>e4b25ad2-6df9-44dc-8e6a-f19213ccffd8</tstamps>
+    </comp>
+    <comp ref="C7">
+      <value>0.1uF</value>
+      <footprint>Capacitor_SMD:C_0805_2012Metric</footprint>
+      <fields>
+        <field name="Standard Cost">0.10</field>
+      </fields>
+      <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
+      <property name="Standard Cost" value="0.10"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="scbs_demo.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>9977a2d0-eb1e-4053-9401-7449ac849cb7</tstamps>
+    </comp>
+    <comp ref="C8">
+      <value>0.1uF</value>
+      <footprint>Capacitor_SMD:C_0805_2012Metric</footprint>
+      <fields>
+        <field name="Standard Cost">0.10</field>
+      </fields>
+      <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
+      <property name="Standard Cost" value="0.10"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="scbs_demo.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>44978827-6e8d-4181-bf69-4f56262ac5b3</tstamps>
+    </comp>
+    <comp ref="C9">
+      <value>0.1uF</value>
+      <footprint>Capacitor_SMD:C_0805_2012Metric</footprint>
+      <fields>
+        <field name="Standard Cost">0.10</field>
+      </fields>
+      <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
+      <property name="Standard Cost" value="0.10"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="scbs_demo.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>32fba9b0-b587-4f23-8484-6162cd02cabc</tstamps>
+    </comp>
+    <comp ref="D1">
+      <value>1N4148</value>
+      <footprint>Diode_SMD:D_SOD-123</footprint>
+      <fields>
+        <field name="MPN">1N4148W-TP</field>
+        <field name="Standard Cost">0.04</field>
+      </fields>
+      <libsource lib="Device" part="D" description="Diode"/>
+      <property name="MPN" value="1N4148W-TP"/>
+      <property name="Standard Cost" value="0.04"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="scbs_demo.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>5183dd08-31e0-4338-a196-36de3f7fb976</tstamps>
+    </comp>
+    <comp ref="D2">
+      <value>1N4148</value>
+      <footprint>Diode_SMD:D_SOD-123</footprint>
+      <fields>
+        <field name="MPN">1N4148W-TP</field>
+        <field name="Standard Cost">0.04</field>
+      </fields>
+      <libsource lib="Device" part="D" description="Diode"/>
+      <property name="MPN" value="1N4148W-TP"/>
+      <property name="Standard Cost" value="0.04"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="scbs_demo.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>bc8e6fe5-a23c-432f-b9c6-3d5db3cb4063</tstamps>
+    </comp>
+    <comp ref="D3">
+      <value>1N4148</value>
+      <footprint>Diode_SMD:D_SOD-123</footprint>
+      <fields>
+        <field name="MPN">1N4148W-TP</field>
+        <field name="Standard Cost">0.04</field>
+      </fields>
+      <libsource lib="Device" part="D" description="Diode"/>
+      <property name="MPN" value="1N4148W-TP"/>
+      <property name="Standard Cost" value="0.04"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="scbs_demo.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>80680af9-759f-4a2b-892d-06421b505b0b</tstamps>
+    </comp>
+    <comp ref="J1">
+      <value>Conn_01x06_Male</value>
+      <footprint>Connector_PinHeader_2.54mm:PinHeader_1x06_P2.54mm_Horizontal</footprint>
+      <fields>
+        <field name="MPN">PREC006SBAN-M71RC</field>
+        <field name="Standard Cost">0.10</field>
+      </fields>
+      <libsource lib="Connector" part="Conn_01x06_Male" description="Generic connector, single row, 01x06, script generated (kicad-library-utils/schlib/autogen/connector/)"/>
+      <property name="MPN" value="PREC006SBAN-M71RC"/>
+      <property name="Standard Cost" value="0.10"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="scbs_demo.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>472288c4-b95f-4e33-91bf-ce88f0543c97</tstamps>
+    </comp>
+    <comp ref="J2">
+      <value>Conn_ARM_JTAG_SWD_10</value>
+      <footprint>Connector_PinHeader_1.27mm:PinHeader_2x05_P1.27mm_Vertical_SMD</footprint>
+      <datasheet>http://infocenter.arm.com/help/topic/com.arm.doc.ddi0314h/DDI0314H_coresight_components_trm.pdf</datasheet>
+      <fields>
+        <field name="MPN">4048</field>
+        <field name="Standard Cost">1.95</field>
+      </fields>
+      <libsource lib="Connector" part="Conn_ARM_JTAG_SWD_10" description="Cortex Debug Connector, standard ARM Cortex-M SWD and JTAG interface"/>
+      <property name="MPN" value="4048"/>
+      <property name="Standard Cost" value="1.95"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="scbs_demo.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>c72b9edc-a07b-4e98-922c-ea4525c41b21</tstamps>
+    </comp>
+    <comp ref="PCB1">
+      <value>PCB</value>
+      <footprint>Custom_Graphic:PCB_PN_REV_small</footprint>
+      <fields>
+        <field name="MPN">PN scbs_pico</field>
+        <field name="REV">REV A</field>
+        <field name="Standard Cost">0.00</field>
+      </fields>
+      <libsource lib="Custom_Placeholder" part="PCB" description="Placeholder for PN and REV in copper to be included on PCB."/>
+      <property name="MPN" value="PN scbs_pico"/>
+      <property name="REV" value="REV A"/>
+      <property name="Standard Cost" value="0.00"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="scbs_demo.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>b5dbc26c-6d42-4492-ba6f-fca43a8dd64b</tstamps>
+    </comp>
+    <comp ref="Q1">
+      <value>2N2907</value>
+      <footprint>Package_TO_SOT_THT:TO-92</footprint>
+      <datasheet>https://www.onsemi.com/pdf/datasheet/p2n2907a-d.pdf</datasheet>
+      <fields>
+        <field name="MPN">PN2907ATF</field>
+        <field name="Standard Cost">0.07</field>
+      </fields>
+      <libsource lib="Device" part="Q_PNP_CBE" description="PNP transistor, collector/base/emitter"/>
+      <property name="MPN" value="PN2907ATF"/>
+      <property name="Standard Cost" value="0.07"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="scbs_demo.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>3370bd87-87f0-484b-8176-23825156bac2</tstamps>
+    </comp>
+    <comp ref="Q2">
+      <value>2N7002</value>
+      <footprint>Package_TO_SOT_SMD:SOT-23</footprint>
+      <datasheet>https://www.onsemi.com/pub/Collateral/NDS7002A-D.PDF</datasheet>
+      <fields>
+        <field name="MPN">2N7002</field>
+        <field name="Standard Cost">0.07</field>
+      </fields>
+      <libsource lib="Transistor_FET" part="2N7002" description="0.115A Id, 60V Vds, N-Channel MOSFET, SOT-23"/>
+      <property name="MPN" value="2N7002"/>
+      <property name="Standard Cost" value="0.07"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="scbs_demo.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>3ca4bce8-3c55-4b14-96b4-ae4ce5effd7f</tstamps>
+    </comp>
+    <comp ref="Q3">
+      <value>MMBT3904</value>
+      <footprint>Package_TO_SOT_SMD:SOT-23</footprint>
+      <datasheet>https://www.onsemi.com/pub/Collateral/2N3903-D.PDF</datasheet>
+      <fields>
+        <field name="Standard Cost">0.04</field>
+      </fields>
+      <libsource lib="Transistor_BJT" part="MMBT3904" description="0.2A Ic, 40V Vce, Small Signal NPN Transistor, SOT-23"/>
+      <property name="Standard Cost" value="0.04"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="scbs_demo.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>afc15252-7663-48dc-9a7d-7ab3d69b8aff</tstamps>
+    </comp>
+    <comp ref="Q4">
+      <value>MMBT3904</value>
+      <footprint>Package_TO_SOT_SMD:SOT-23</footprint>
+      <datasheet>https://www.onsemi.com/pub/Collateral/2N3903-D.PDF</datasheet>
+      <fields>
+        <field name="Standard Cost">0.04</field>
+      </fields>
+      <libsource lib="Transistor_BJT" part="MMBT3904" description="0.2A Ic, 40V Vce, Small Signal NPN Transistor, SOT-23"/>
+      <property name="Standard Cost" value="0.04"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="scbs_demo.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>f38096ab-0c8d-463e-bd22-95ffc94f8755</tstamps>
+    </comp>
+    <comp ref="R1">
+      <value>2k</value>
+      <footprint>Resistor_SMD:R_0805_2012Metric</footprint>
+      <fields>
+        <field name="Standard Cost">0.01</field>
+      </fields>
+      <libsource lib="Device" part="R_US" description="Resistor, US symbol"/>
+      <property name="Standard Cost" value="0.01"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="scbs_demo.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>9df6450b-426e-44a8-8013-a148bb9d7476</tstamps>
+    </comp>
+    <comp ref="R2">
+      <value>1k</value>
+      <footprint>Resistor_SMD:R_0805_2012Metric</footprint>
+      <fields>
+        <field name="Standard Cost">0.01</field>
+      </fields>
+      <libsource lib="Device" part="R_US" description="Resistor, US symbol"/>
+      <property name="Standard Cost" value="0.01"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="scbs_demo.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>996fc4c6-670c-47e0-8fd9-40439fd4e145</tstamps>
+    </comp>
+    <comp ref="R3">
+      <value>3k3</value>
+      <footprint>Resistor_SMD:R_0805_2012Metric</footprint>
+      <fields>
+        <field name="Standard Cost">0.01</field>
+      </fields>
+      <libsource lib="Device" part="R_US" description="Resistor, US symbol"/>
+      <property name="Standard Cost" value="0.01"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="scbs_demo.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>575a8d77-7e7a-4794-bab7-76c600e8eaad</tstamps>
+    </comp>
+    <comp ref="R4">
+      <value>3k3</value>
+      <footprint>Resistor_SMD:R_0805_2012Metric</footprint>
+      <fields>
+        <field name="Standard Cost">0.01</field>
+      </fields>
+      <libsource lib="Device" part="R_US" description="Resistor, US symbol"/>
+      <property name="Standard Cost" value="0.01"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="scbs_demo.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>c3713c44-4daa-4dee-bd6d-1599966d6036</tstamps>
+    </comp>
+    <comp ref="R5">
+      <value>100R</value>
+      <footprint>Resistor_SMD:R_0805_2012Metric</footprint>
+      <fields>
+        <field name="Standard Cost">0.01</field>
+      </fields>
+      <libsource lib="Device" part="R_US" description="Resistor, US symbol"/>
+      <property name="Standard Cost" value="0.01"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="scbs_demo.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>01c7dbf1-4f72-4a80-838a-95b588865507</tstamps>
+    </comp>
+    <comp ref="R6">
+      <value>390R</value>
+      <footprint>Resistor_SMD:R_0805_2012Metric</footprint>
+      <fields>
+        <field name="Standard Cost">0.01</field>
+      </fields>
+      <libsource lib="Device" part="R_US" description="Resistor, US symbol"/>
+      <property name="Standard Cost" value="0.01"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="scbs_demo.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>52915bd2-415a-4400-b972-3830f62c9437</tstamps>
+    </comp>
+    <comp ref="R7">
+      <value>0R</value>
+      <footprint>Resistor_SMD:R_0805_2012Metric</footprint>
+      <fields>
+        <field name="Standard Cost">0.01</field>
+      </fields>
+      <libsource lib="Device" part="R_US" description="Resistor, US symbol"/>
+      <property name="Standard Cost" value="0.01"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="scbs_demo.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>03451f28-41f6-4cfe-8fc8-ab836fd0b9f1</tstamps>
+    </comp>
+    <comp ref="R8">
+      <value>4R 1% 0805</value>
+      <footprint>Resistor_SMD:R_0805_2012Metric</footprint>
+      <fields>
+        <field name="Standard Cost">0.01</field>
+      </fields>
+      <libsource lib="Device" part="R_US" description="Resistor, US symbol"/>
+      <property name="Standard Cost" value="0.01"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="scbs_demo.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>0c9f63f1-154f-4167-9ded-867f196c08dd</tstamps>
+    </comp>
+    <comp ref="R9">
+      <value>4R 1% 0805</value>
+      <footprint>Resistor_SMD:R_0805_2012Metric</footprint>
+      <fields>
+        <field name="Standard Cost">0.01</field>
+      </fields>
+      <libsource lib="Device" part="R_US" description="Resistor, US symbol"/>
+      <property name="Standard Cost" value="0.01"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="scbs_demo.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>cad5f48b-360e-4ee1-9c63-cfa40cda6682</tstamps>
+    </comp>
+    <comp ref="R10">
+      <value>4R 1% 0805</value>
+      <footprint>Resistor_SMD:R_0805_2012Metric</footprint>
+      <fields>
+        <field name="Standard Cost">0.01</field>
+      </fields>
+      <libsource lib="Device" part="R_US" description="Resistor, US symbol"/>
+      <property name="Standard Cost" value="0.01"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="scbs_demo.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>25a9c1eb-0b7b-4424-bdab-af645babbc4d</tstamps>
+    </comp>
+    <comp ref="R11">
+      <value>10k</value>
+      <footprint>Resistor_SMD:R_0805_2012Metric</footprint>
+      <fields>
+        <field name="Standard Cost">0.01</field>
+      </fields>
+      <libsource lib="Device" part="R_US" description="Resistor, US symbol"/>
+      <property name="Standard Cost" value="0.01"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="scbs_demo.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>89e2b305-09b7-42be-a849-0b21d2a4259b</tstamps>
+    </comp>
+    <comp ref="R12">
+      <value>4R 1% 0805</value>
+      <footprint>Resistor_SMD:R_0805_2012Metric</footprint>
+      <fields>
+        <field name="Standard Cost">0.01</field>
+      </fields>
+      <libsource lib="Device" part="R_US" description="Resistor, US symbol"/>
+      <property name="Standard Cost" value="0.01"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="scbs_demo.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>ff8d37cd-3da3-417c-a0fc-f4fdf44a9126</tstamps>
+    </comp>
+    <comp ref="R13">
+      <value>0R</value>
+      <footprint>Resistor_SMD:R_0805_2012Metric</footprint>
+      <fields>
+        <field name="Standard Cost">0.01</field>
+      </fields>
+      <libsource lib="Device" part="R_US" description="Resistor, US symbol"/>
+      <property name="Standard Cost" value="0.01"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="scbs_demo.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>3da06448-3f74-4948-a6de-8e4ddcf3a451</tstamps>
+    </comp>
+    <comp ref="R14">
+      <value>1k</value>
+      <footprint>Resistor_SMD:R_0805_2012Metric</footprint>
+      <fields>
+        <field name="Standard Cost">0.01</field>
+      </fields>
+      <libsource lib="Device" part="R_US" description="Resistor, US symbol"/>
+      <property name="Standard Cost" value="0.01"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="scbs_demo.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>01aaca7e-4af3-469d-90de-3e450da96ed7</tstamps>
+    </comp>
+    <comp ref="R15">
+      <value>10k</value>
+      <footprint>Resistor_SMD:R_0805_2012Metric</footprint>
+      <fields>
+        <field name="Standard Cost">0.01</field>
+      </fields>
+      <libsource lib="Device" part="R_US" description="Resistor, US symbol"/>
+      <property name="Standard Cost" value="0.01"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="scbs_demo.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>85853062-8be8-409c-8854-83e4a8ae9bfe</tstamps>
+    </comp>
+    <comp ref="R16">
+      <value>DNP</value>
+      <footprint>Resistor_SMD:R_0805_2012Metric</footprint>
+      <fields>
+        <field name="Standard Cost">0.01</field>
+      </fields>
+      <libsource lib="Device" part="R_US" description="Resistor, US symbol"/>
+      <property name="Standard Cost" value="0.01"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="scbs_demo.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>59a896a2-1a0f-4726-81bd-86b5c1073d52</tstamps>
+    </comp>
+    <comp ref="R17">
+      <value>500k 0.1%</value>
+      <footprint>Resistor_SMD:R_0805_2012Metric</footprint>
+      <fields>
+        <field name="Standard Cost">0.01</field>
+      </fields>
+      <libsource lib="Device" part="R_US" description="Resistor, US symbol"/>
+      <property name="Standard Cost" value="0.01"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="scbs_demo.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>1924ecb5-f395-4a02-b6a8-66e499d5b48e</tstamps>
+    </comp>
+    <comp ref="R18">
+      <value>500k 0.1%</value>
+      <footprint>Resistor_SMD:R_0805_2012Metric</footprint>
+      <fields>
+        <field name="Standard Cost">0.01</field>
+      </fields>
+      <libsource lib="Device" part="R_US" description="Resistor, US symbol"/>
+      <property name="Standard Cost" value="0.01"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="scbs_demo.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>bae29353-aba2-4f09-bbd9-cd165b26f574</tstamps>
+    </comp>
+    <comp ref="R19">
+      <value>1R</value>
+      <footprint>Resistor_SMD:R_0805_2012Metric</footprint>
+      <fields>
+        <field name="Standard Cost">0.01</field>
+      </fields>
+      <libsource lib="Device" part="R_US" description="Resistor, US symbol"/>
+      <property name="Standard Cost" value="0.01"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="scbs_demo.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>c04e33d2-8b8d-4660-b4cf-4ef64c1f1216</tstamps>
+    </comp>
+    <comp ref="R20">
+      <value>2k</value>
+      <footprint>Resistor_SMD:R_0805_2012Metric</footprint>
+      <fields>
+        <field name="Standard Cost">0.01</field>
+      </fields>
+      <libsource lib="Device" part="R_US" description="Resistor, US symbol"/>
+      <property name="Standard Cost" value="0.01"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="scbs_demo.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>9f1e2e01-723a-446f-8f13-e29292866f46</tstamps>
+    </comp>
+    <comp ref="R21">
+      <value>8.25M 0.1%</value>
+      <footprint>Resistor_SMD:R_0805_2012Metric</footprint>
+      <fields>
+        <field name="Standard Cost">0.01</field>
+      </fields>
+      <libsource lib="Device" part="R_US" description="Resistor, US symbol"/>
+      <property name="Standard Cost" value="0.01"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="scbs_demo.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>fc0f4a6b-8c97-40be-a956-b8dcc5258115</tstamps>
+    </comp>
+    <comp ref="R22">
+      <value>8.25M 0.1%</value>
+      <footprint>Resistor_SMD:R_0805_2012Metric</footprint>
+      <fields>
+        <field name="Standard Cost">0.01</field>
+      </fields>
+      <libsource lib="Device" part="R_US" description="Resistor, US symbol"/>
+      <property name="Standard Cost" value="0.01"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="scbs_demo.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>3ab733f0-bff7-4072-8f41-65bc22a0fc34</tstamps>
+    </comp>
+    <comp ref="R23">
+      <value>390R</value>
+      <footprint>Resistor_SMD:R_0805_2012Metric</footprint>
+      <fields>
+        <field name="Standard Cost">0.01</field>
+      </fields>
+      <libsource lib="Device" part="R_US" description="Resistor, US symbol"/>
+      <property name="Standard Cost" value="0.01"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="scbs_demo.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>79fa051c-c6e5-4725-ab8f-15f9b626e9a2</tstamps>
+    </comp>
+    <comp ref="R24">
+      <value>390R</value>
+      <footprint>Resistor_SMD:R_0805_2012Metric</footprint>
+      <fields>
+        <field name="Standard Cost">0.01</field>
+      </fields>
+      <libsource lib="Device" part="R_US" description="Resistor, US symbol"/>
+      <property name="Standard Cost" value="0.01"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="scbs_demo.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>14430496-a1bc-45cb-95a1-fa92cbec4eee</tstamps>
+    </comp>
+    <comp ref="R25">
+      <value>10k</value>
+      <footprint>Resistor_SMD:R_0805_2012Metric</footprint>
+      <fields>
+        <field name="Standard Cost">0.01</field>
+      </fields>
+      <libsource lib="Device" part="R_US" description="Resistor, US symbol"/>
+      <property name="Standard Cost" value="0.01"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="scbs_demo.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>d6cc53e4-f2e4-412a-be19-cba9669d84d7</tstamps>
+    </comp>
+    <comp ref="R26">
+      <value>1k</value>
+      <footprint>Resistor_SMD:R_0805_2012Metric</footprint>
+      <fields>
+        <field name="Standard Cost">0.01</field>
+      </fields>
+      <libsource lib="Device" part="R_US" description="Resistor, US symbol"/>
+      <property name="Standard Cost" value="0.01"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="scbs_demo.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>78e15ad6-0f7a-45e8-8479-1d9dd0db5a2b</tstamps>
+    </comp>
+    <comp ref="R27">
+      <value>10k</value>
+      <footprint>Resistor_SMD:R_0805_2012Metric</footprint>
+      <fields>
+        <field name="Standard Cost">0.01</field>
+      </fields>
+      <libsource lib="Device" part="R_US" description="Resistor, US symbol"/>
+      <property name="Standard Cost" value="0.01"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="scbs_demo.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>0282d4b3-77fc-4d5d-bff6-f03d82d72277</tstamps>
+    </comp>
+    <comp ref="R28">
+      <value>10k</value>
+      <footprint>Resistor_SMD:R_0805_2012Metric</footprint>
+      <fields>
+        <field name="Standard Cost">0.01</field>
+      </fields>
+      <libsource lib="Device" part="R_US" description="Resistor, US symbol"/>
+      <property name="Standard Cost" value="0.01"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="scbs_demo.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>e2d9d3b3-b77f-41ef-a6c6-7395cb2aa164</tstamps>
+    </comp>
+    <comp ref="R30">
+      <value>10k</value>
+      <footprint>Resistor_SMD:R_0805_2012Metric</footprint>
+      <fields>
+        <field name="Standard Cost">0.01</field>
+      </fields>
+      <libsource lib="Device" part="R_US" description="Resistor, US symbol"/>
+      <property name="Standard Cost" value="0.01"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="scbs_demo.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>c2f2e560-4066-4bc2-b5f9-a77b707d8205</tstamps>
+    </comp>
+    <comp ref="TP1">
+      <value>TestPoint</value>
+      <footprint>TestPoint:TestPoint_Pad_2.0x2.0mm</footprint>
+      <fields>
+        <field name="Standard Cost">0.00</field>
+      </fields>
+      <libsource lib="Connector" part="TestPoint" description="test point"/>
+      <property name="Standard Cost" value="0.00"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="scbs_demo.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>17bd62d1-5001-4076-b310-eabe29891324</tstamps>
+    </comp>
+    <comp ref="TP2">
+      <value>TestPoint</value>
+      <footprint>TestPoint:TestPoint_Pad_2.0x2.0mm</footprint>
+      <fields>
+        <field name="Standard Cost">0.00</field>
+      </fields>
+      <libsource lib="Connector" part="TestPoint" description="test point"/>
+      <property name="Standard Cost" value="0.00"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="scbs_demo.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>13230a25-a7b3-4a87-abe5-b0f40bc741c0</tstamps>
+    </comp>
+    <comp ref="TP3">
+      <value>TestPoint</value>
+      <footprint>TestPoint:TestPoint_Pad_2.0x2.0mm</footprint>
+      <fields>
+        <field name="Standard Cost">0.00</field>
+      </fields>
+      <libsource lib="Connector" part="TestPoint" description="test point"/>
+      <property name="Standard Cost" value="0.00"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="scbs_demo.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>c1578ffb-0af2-4f27-8bf2-e7d6663727b3</tstamps>
+    </comp>
+    <comp ref="TP4">
+      <value>TestPoint</value>
+      <footprint>TestPoint:TestPoint_Pad_2.0x2.0mm</footprint>
+      <fields>
+        <field name="Standard Cost">0.00</field>
+      </fields>
+      <libsource lib="Connector" part="TestPoint" description="test point"/>
+      <property name="Standard Cost" value="0.00"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="scbs_demo.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>cee1d552-7371-4cab-ac20-22a46dc1a1f7</tstamps>
+    </comp>
+    <comp ref="TP5">
+      <value>TestPoint</value>
+      <footprint>TestPoint:TestPoint_Pad_2.0x2.0mm</footprint>
+      <fields>
+        <field name="Standard Cost">0.00</field>
+      </fields>
+      <libsource lib="Connector" part="TestPoint" description="test point"/>
+      <property name="Standard Cost" value="0.00"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="scbs_demo.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>8c3cf130-502a-46f6-9dd5-57285d759693</tstamps>
+    </comp>
+    <comp ref="TP6">
+      <value>TestPoint</value>
+      <footprint>TestPoint:TestPoint_Pad_2.0x2.0mm</footprint>
+      <fields>
+        <field name="Standard Cost">0.00</field>
+      </fields>
+      <libsource lib="Connector" part="TestPoint" description="test point"/>
+      <property name="Standard Cost" value="0.00"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="scbs_demo.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>b6bdc441-9a9a-463b-a5e8-8045f5dbd041</tstamps>
+    </comp>
+    <comp ref="TP7">
+      <value>TestPoint</value>
+      <footprint>TestPoint:TestPoint_Pad_2.0x2.0mm</footprint>
+      <fields>
+        <field name="Standard Cost">0.00</field>
+      </fields>
+      <libsource lib="Connector" part="TestPoint" description="test point"/>
+      <property name="Standard Cost" value="0.00"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="scbs_demo.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>fc197737-965d-402e-a24f-d7746c3b7750</tstamps>
+    </comp>
+    <comp ref="TP8">
+      <value>TestPoint</value>
+      <footprint>TestPoint:TestPoint_Pad_2.0x2.0mm</footprint>
+      <fields>
+        <field name="Standard Cost">0.00</field>
+      </fields>
+      <libsource lib="Connector" part="TestPoint" description="test point"/>
+      <property name="Standard Cost" value="0.00"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="scbs_demo.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>65cb6a19-d745-46ac-987f-9ae3e726881c</tstamps>
+    </comp>
+    <comp ref="TP9">
+      <value>TestPoint</value>
+      <footprint>TestPoint:TestPoint_Pad_2.0x2.0mm</footprint>
+      <fields>
+        <field name="Standard Cost">0.00</field>
+      </fields>
+      <libsource lib="Connector" part="TestPoint" description="test point"/>
+      <property name="Standard Cost" value="0.00"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="scbs_demo.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>5498a716-48b6-4b26-ae3e-e314749b9304</tstamps>
+    </comp>
+    <comp ref="TP10">
+      <value>TestPoint</value>
+      <footprint>TestPoint:TestPoint_Pad_2.0x2.0mm</footprint>
+      <fields>
+        <field name="Standard Cost">0.00</field>
+      </fields>
+      <libsource lib="Connector" part="TestPoint" description="test point"/>
+      <property name="Standard Cost" value="0.00"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="scbs_demo.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>c6f74c1d-0314-41de-a3f7-11c5bec86736</tstamps>
+    </comp>
+    <comp ref="TP11">
+      <value>TestPoint</value>
+      <footprint>TestPoint:TestPoint_Pad_2.0x2.0mm</footprint>
+      <fields>
+        <field name="Standard Cost">0.00</field>
+      </fields>
+      <libsource lib="Connector" part="TestPoint" description="test point"/>
+      <property name="Standard Cost" value="0.00"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="scbs_demo.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>3bfa0f13-6349-416c-b939-ae554289f2ed</tstamps>
+    </comp>
+    <comp ref="U1">
+      <value>TLV9062xD</value>
+      <footprint>Package_SO:SOIC-8_3.9x4.9mm_P1.27mm</footprint>
+      <datasheet>https://www.ti.com/lit/ds/symlink/tlv9062.pdf</datasheet>
+      <fields>
+        <field name="MPN">TLV9062IDR</field>
+        <field name="Standard Cost">0.44</field>
+      </fields>
+      <libsource lib="Amplifier_Operational" part="TLV9062xD" description="Dual operational amplifier, 300 uV Offset, SOIC-8"/>
+      <property name="MPN" value="TLV9062IDR"/>
+      <property name="Standard Cost" value="0.44"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="scbs_demo.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>26269045-ef54-4c1f-9412-c5d041dc3b9a 83a395e0-cf21-4802-9eb0-300fe858b714 0b62f2f0-838e-4ece-ba4c-c1d4643e8780</tstamps>
+    </comp>
+    <comp ref="U2">
+      <value>PC817</value>
+      <footprint>Package_DIP:DIP-4_W7.62mm</footprint>
+      <datasheet>http://www.soselectronic.cz/a_info/resource/d/pc817.pdf</datasheet>
+      <fields>
+        <field name="MPN">BPC-817S ( C BIN )</field>
+        <field name="Standard Cost">0.15</field>
+      </fields>
+      <libsource lib="Isolator" part="PC817" description="DC Optocoupler, Vce 35V, CTR 50-300%, DIP-4"/>
+      <property name="MPN" value="BPC-817S ( C BIN )"/>
+      <property name="Standard Cost" value="0.15"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="scbs_demo.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>00897fdf-2151-40d8-90a9-f912ca7b2fb6</tstamps>
+    </comp>
+    <comp ref="U3">
+      <value>Pico</value>
+      <footprint>Custom_Module:RPi_Pico_SMD_TH</footprint>
+      <datasheet>https://datasheets.raspberrypi.com/pico/pico-datasheet.pdf</datasheet>
+      <fields>
+        <field name="MPN">SC0915</field>
+        <field name="Standard Cost">4.00</field>
+      </fields>
+      <libsource lib="Custom_MCU" part="Pico" description=""/>
+      <property name="Standard Cost" value="4.00"/>
+      <property name="MPN" value="SC0915"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="scbs_demo.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>450da930-d68b-4b59-a5df-01ed6d7a18b9</tstamps>
+    </comp>
+  </components>
+  <libparts>
+    <libpart lib="Amplifier_Operational" part="TLV9062xD">
+      <description>Dual operational amplifier, 300 uV Offset, SOIC-8</description>
+      <docs>https://www.ti.com/lit/ds/symlink/tlv9062.pdf</docs>
+      <footprints>
+        <fp>SOIC*3.9x4.9mm*P1.27mm*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">U</field>
+        <field name="Value">TLV9062xD</field>
+        <field name="Footprint">Package_SO:SOIC-8_3.9x4.9mm_P1.27mm</field>
+        <field name="Datasheet">https://www.ti.com/lit/ds/symlink/tlv9062.pdf</field>
+      </fields>
+      <pins>
+        <pin num="1" name="" type="output"/>
+        <pin num="2" name="-" type="input"/>
+        <pin num="3" name="+" type="input"/>
+        <pin num="4" name="V-" type="power_in"/>
+        <pin num="5" name="+" type="input"/>
+        <pin num="6" name="-" type="input"/>
+        <pin num="7" name="" type="output"/>
+        <pin num="8" name="V+" type="power_in"/>
+      </pins>
+    </libpart>
+    <libpart lib="Connector" part="Conn_01x06_Male">
+      <description>Generic connector, single row, 01x06, script generated (kicad-library-utils/schlib/autogen/connector/)</description>
+      <docs>~</docs>
+      <footprints>
+        <fp>Connector*:*_1x??_*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">J</field>
+        <field name="Value">Conn_01x06_Male</field>
+        <field name="Datasheet">~</field>
+      </fields>
+      <pins>
+        <pin num="1" name="Pin_1" type="passive"/>
+        <pin num="2" name="Pin_2" type="passive"/>
+        <pin num="3" name="Pin_3" type="passive"/>
+        <pin num="4" name="Pin_4" type="passive"/>
+        <pin num="5" name="Pin_5" type="passive"/>
+        <pin num="6" name="Pin_6" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Connector" part="Conn_ARM_JTAG_SWD_10">
+      <description>Cortex Debug Connector, standard ARM Cortex-M SWD and JTAG interface</description>
+      <docs>http://infocenter.arm.com/help/topic/com.arm.doc.ddi0314h/DDI0314H_coresight_components_trm.pdf</docs>
+      <footprints>
+        <fp>PinHeader?2x05?P1.27mm*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">J</field>
+        <field name="Value">Conn_ARM_JTAG_SWD_10</field>
+        <field name="Datasheet">http://infocenter.arm.com/help/topic/com.arm.doc.ddi0314h/DDI0314H_coresight_components_trm.pdf</field>
+      </fields>
+      <pins>
+        <pin num="1" name="VTref" type="power_in"/>
+        <pin num="2" name="SWDIO/TMS" type="bidirectional"/>
+        <pin num="3" name="GND" type="power_in"/>
+        <pin num="4" name="SWDCLK/TCK" type="output"/>
+        <pin num="5" name="GND" type="passive"/>
+        <pin num="6" name="SWO/TDO" type="input"/>
+        <pin num="7" name="KEY" type="no_connect"/>
+        <pin num="8" name="NC/TDI" type="output"/>
+        <pin num="9" name="GNDDetect" type="passive"/>
+        <pin num="10" name="~{RESET}" type="open_collector"/>
+      </pins>
+    </libpart>
+    <libpart lib="Connector" part="TestPoint">
+      <description>test point</description>
+      <docs>~</docs>
+      <footprints>
+        <fp>Pin*</fp>
+        <fp>Test*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">TP</field>
+        <field name="Value">TestPoint</field>
+        <field name="Datasheet">~</field>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Custom_MCU" part="Pico">
+      <fields>
+        <field name="Reference">U</field>
+        <field name="Value">Pico</field>
+        <field name="Footprint">RPi_Pico:RPi_Pico_SMD_TH</field>
+      </fields>
+      <pins>
+        <pin num="1" name="GPIO0" type="bidirectional"/>
+        <pin num="2" name="GPIO1" type="bidirectional"/>
+        <pin num="3" name="GND" type="power_in"/>
+        <pin num="4" name="GPIO2" type="bidirectional"/>
+        <pin num="5" name="GPIO3" type="bidirectional"/>
+        <pin num="6" name="GPIO4" type="bidirectional"/>
+        <pin num="7" name="GPIO5" type="bidirectional"/>
+        <pin num="8" name="GND" type="power_in"/>
+        <pin num="9" name="GPIO6" type="bidirectional"/>
+        <pin num="10" name="GPIO7" type="bidirectional"/>
+        <pin num="11" name="GPIO8" type="bidirectional"/>
+        <pin num="12" name="GPIO9" type="bidirectional"/>
+        <pin num="13" name="GND" type="power_in"/>
+        <pin num="14" name="GPIO10" type="bidirectional"/>
+        <pin num="15" name="GPIO11" type="bidirectional"/>
+        <pin num="16" name="GPIO12" type="bidirectional"/>
+        <pin num="17" name="GPIO13" type="bidirectional"/>
+        <pin num="18" name="GND" type="power_in"/>
+        <pin num="19" name="GPIO14" type="bidirectional"/>
+        <pin num="20" name="GPIO15" type="bidirectional"/>
+        <pin num="21" name="GPIO16" type="bidirectional"/>
+        <pin num="22" name="GPIO17" type="bidirectional"/>
+        <pin num="23" name="GND" type="power_in"/>
+        <pin num="24" name="GPIO18" type="bidirectional"/>
+        <pin num="25" name="GPIO19" type="bidirectional"/>
+        <pin num="26" name="GPIO20" type="bidirectional"/>
+        <pin num="27" name="GPIO21" type="bidirectional"/>
+        <pin num="28" name="GND" type="power_in"/>
+        <pin num="29" name="GPIO22" type="bidirectional"/>
+        <pin num="30" name="RUN" type="input"/>
+        <pin num="31" name="GPIO26_ADC0" type="bidirectional"/>
+        <pin num="32" name="GPIO27_ADC1" type="bidirectional"/>
+        <pin num="33" name="AGND" type="power_in"/>
+        <pin num="34" name="GPIO28_ADC2" type="bidirectional"/>
+        <pin num="35" name="ADC_VREF" type="unspecified"/>
+        <pin num="36" name="3V3" type="unspecified"/>
+        <pin num="37" name="3V3_EN" type="input"/>
+        <pin num="38" name="GND" type="bidirectional"/>
+        <pin num="39" name="VSYS" type="unspecified"/>
+        <pin num="40" name="VBUS" type="unspecified"/>
+        <pin num="41" name="SWCLK" type="input"/>
+        <pin num="42" name="GND" type="power_in"/>
+        <pin num="43" name="SWDIO" type="bidirectional"/>
+      </pins>
+    </libpart>
+    <libpart lib="Custom_Placeholder" part="Graphic">
+      <description>Placeholder for silkscreen graphic to be included on PCB.</description>
+      <fields>
+        <field name="Reference">GRAPHIC</field>
+        <field name="Value">Graphic</field>
+      </fields>
+    </libpart>
+    <libpart lib="Custom_Placeholder" part="PCB">
+      <description>Placeholder for PN and REV in copper to be included on PCB.</description>
+      <fields>
+        <field name="Reference">PCB</field>
+        <field name="Value">PCB</field>
+        <field name="MPN">PN XXXXXXX</field>
+        <field name="REV">REV _</field>
+      </fields>
+    </libpart>
+    <libpart lib="Device" part="C">
+      <description>Unpolarized capacitor</description>
+      <docs>~</docs>
+      <footprints>
+        <fp>C_*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">C</field>
+        <field name="Value">C</field>
+        <field name="Datasheet">~</field>
+      </fields>
+      <pins>
+        <pin num="1" name="" type="passive"/>
+        <pin num="2" name="" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Device" part="D">
+      <description>Diode</description>
+      <docs>~</docs>
+      <footprints>
+        <fp>TO-???*</fp>
+        <fp>*_Diode_*</fp>
+        <fp>*SingleDiode*</fp>
+        <fp>D_*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">D</field>
+        <field name="Value">D</field>
+        <field name="Datasheet">~</field>
+      </fields>
+      <pins>
+        <pin num="1" name="K" type="passive"/>
+        <pin num="2" name="A" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Device" part="Q_PNP_CBE">
+      <description>PNP transistor, collector/base/emitter</description>
+      <docs>~</docs>
+      <fields>
+        <field name="Reference">Q</field>
+        <field name="Value">Q_PNP_CBE</field>
+        <field name="Datasheet">~</field>
+      </fields>
+      <pins>
+        <pin num="1" name="C" type="passive"/>
+        <pin num="2" name="B" type="input"/>
+        <pin num="3" name="E" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Device" part="R_US">
+      <description>Resistor, US symbol</description>
+      <docs>~</docs>
+      <footprints>
+        <fp>R_*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">R</field>
+        <field name="Value">R_US</field>
+        <field name="Datasheet">~</field>
+      </fields>
+      <pins>
+        <pin num="1" name="" type="passive"/>
+        <pin num="2" name="" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Isolator" part="PC817">
+      <description>DC Optocoupler, Vce 35V, CTR 50-300%, DIP-4</description>
+      <docs>http://www.soselectronic.cz/a_info/resource/d/pc817.pdf</docs>
+      <footprints>
+        <fp>DIP*W7.62mm*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">U</field>
+        <field name="Value">PC817</field>
+        <field name="Footprint">Package_DIP:DIP-4_W7.62mm</field>
+        <field name="Datasheet">http://www.soselectronic.cz/a_info/resource/d/pc817.pdf</field>
+      </fields>
+      <pins>
+        <pin num="1" name="" type="passive"/>
+        <pin num="2" name="" type="passive"/>
+        <pin num="3" name="" type="passive"/>
+        <pin num="4" name="" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Mechanical" part="MountingHole">
+      <description>Mounting Hole without connection</description>
+      <docs>~</docs>
+      <footprints>
+        <fp>MountingHole*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">H</field>
+        <field name="Value">MountingHole</field>
+        <field name="Datasheet">~</field>
+      </fields>
+    </libpart>
+    <libpart lib="Transistor_BJT" part="MMBT3904">
+      <description>0.2A Ic, 40V Vce, Small Signal NPN Transistor, SOT-23</description>
+      <docs>https://www.onsemi.com/pub/Collateral/2N3903-D.PDF</docs>
+      <footprints>
+        <fp>SOT?23*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">Q</field>
+        <field name="Value">MMBT3904</field>
+        <field name="Footprint">Package_TO_SOT_SMD:SOT-23</field>
+        <field name="Datasheet">https://www.onsemi.com/pub/Collateral/2N3903-D.PDF</field>
+      </fields>
+      <pins>
+        <pin num="1" name="B" type="input"/>
+        <pin num="2" name="E" type="passive"/>
+        <pin num="3" name="C" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Transistor_FET" part="2N7002">
+      <description>0.115A Id, 60V Vds, N-Channel MOSFET, SOT-23</description>
+      <docs>https://www.onsemi.com/pub/Collateral/NDS7002A-D.PDF</docs>
+      <footprints>
+        <fp>SOT?23*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">Q</field>
+        <field name="Value">2N7002</field>
+        <field name="Footprint">Package_TO_SOT_SMD:SOT-23</field>
+        <field name="Datasheet">https://www.onsemi.com/pub/Collateral/NDS7002A-D.PDF</field>
+      </fields>
+      <pins>
+        <pin num="1" name="G" type="input"/>
+        <pin num="2" name="S" type="passive"/>
+        <pin num="3" name="D" type="passive"/>
+      </pins>
+    </libpart>
+  </libparts>
+  <libraries>
+    <library logical="Amplifier_Operational">
+      <uri>C:\Program Files\KiCad\6.0\share\kicad\symbols\/Amplifier_Operational.kicad_sym</uri>
+    </library>
+    <library logical="Connector">
+      <uri>C:\Program Files\KiCad\6.0\share\kicad\symbols\/Connector.kicad_sym</uri>
+    </library>
+    <library logical="Custom_MCU">
+      <uri>C:\git-checkouts\kicad-libs/lib_sch/Custom_MCU.kicad_sym</uri>
+    </library>
+    <library logical="Custom_Placeholder">
+      <uri>C:\git-checkouts\kicad-libs/lib_sch/Custom_Placeholder.kicad_sym</uri>
+    </library>
+    <library logical="Device">
+      <uri>C:\Program Files\KiCad\6.0\share\kicad\symbols\/Device.kicad_sym</uri>
+    </library>
+    <library logical="Isolator">
+      <uri>C:\Program Files\KiCad\6.0\share\kicad\symbols\/Isolator.kicad_sym</uri>
+    </library>
+    <library logical="Mechanical">
+      <uri>C:\Program Files\KiCad\6.0\share\kicad\symbols\/Mechanical.kicad_sym</uri>
+    </library>
+    <library logical="Transistor_BJT">
+      <uri>C:\Program Files\KiCad\6.0\share\kicad\symbols\/Transistor_BJT.kicad_sym</uri>
+    </library>
+    <library logical="Transistor_FET">
+      <uri>C:\Program Files\KiCad\6.0\share\kicad\symbols\/Transistor_FET.kicad_sym</uri>
+    </library>
+  </libraries>
+  <nets>
+    <net code="1" name="+3V3">
+      <node ref="J2" pin="1" pinfunction="VTref" pintype="power_in"/>
+      <node ref="Q2" pin="1" pinfunction="G" pintype="input"/>
+      <node ref="R30" pin="1" pintype="passive"/>
+      <node ref="R4" pin="1" pintype="passive"/>
+      <node ref="TP11" pin="1" pinfunction="1" pintype="passive"/>
+      <node ref="U2" pin="4" pintype="passive"/>
+      <node ref="U3" pin="36" pinfunction="3V3" pintype="unspecified"/>
+    </net>
+    <net code="2" name="+5V">
+      <node ref="C2" pin="1" pintype="passive"/>
+      <node ref="C3" pin="1" pintype="passive"/>
+      <node ref="C4" pin="1" pintype="passive"/>
+      <node ref="D1" pin="1" pinfunction="K" pintype="passive"/>
+      <node ref="J1" pin="1" pinfunction="Pin_1" pintype="passive"/>
+      <node ref="Q1" pin="3" pinfunction="E" pintype="passive"/>
+      <node ref="R2" pin="1" pintype="passive"/>
+      <node ref="R26" pin="1" pintype="passive"/>
+      <node ref="R3" pin="1" pintype="passive"/>
+      <node ref="TP10" pin="1" pinfunction="1" pintype="passive"/>
+      <node ref="U1" pin="8" pinfunction="V+" pintype="power_in"/>
+      <node ref="U3" pin="39" pinfunction="VSYS" pintype="unspecified"/>
+    </net>
+    <net code="3" name="/BASE">
+      <node ref="C2" pin="2" pintype="passive"/>
+      <node ref="Q3" pin="3" pinfunction="C" pintype="passive"/>
+      <node ref="R2" pin="2" pintype="passive"/>
+      <node ref="R5" pin="1" pintype="passive"/>
+      <node ref="TP5" pin="1" pinfunction="1" pintype="passive"/>
+    </net>
+    <net code="4" name="/CMD">
+      <node ref="C9" pin="1" pintype="passive"/>
+      <node ref="R15" pin="1" pintype="passive"/>
+      <node ref="R27" pin="2" pintype="passive"/>
+      <node ref="TP2" pin="1" pinfunction="1" pintype="passive"/>
+    </net>
+    <net code="5" name="/CMD_PWM">
+      <node ref="R28" pin="1" pintype="passive"/>
+      <node ref="TP4" pin="1" pinfunction="1" pintype="passive"/>
+      <node ref="U3" pin="21" pinfunction="GPIO16" pintype="bidirectional"/>
+    </net>
+    <net code="6" name="/CSENSE">
+      <node ref="R22" pin="2" pintype="passive"/>
+      <node ref="R25" pin="1" pintype="passive"/>
+      <node ref="TP8" pin="1" pinfunction="1" pintype="passive"/>
+      <node ref="U1" pin="7" pintype="output"/>
+    </net>
+    <net code="7" name="/CSENSE_FILT">
+      <node ref="C8" pin="1" pintype="passive"/>
+      <node ref="R25" pin="2" pintype="passive"/>
+      <node ref="U3" pin="34" pinfunction="GPIO28_ADC2" pintype="bidirectional"/>
+    </net>
+    <net code="8" name="/ERR">
+      <node ref="C1" pin="2" pintype="passive"/>
+      <node ref="Q3" pin="2" pinfunction="E" pintype="passive"/>
+      <node ref="R1" pin="2" pintype="passive"/>
+      <node ref="R19" pin="1" pintype="passive"/>
+      <node ref="TP3" pin="1" pinfunction="1" pintype="passive"/>
+    </net>
+    <net code="9" name="/OUT">
+      <node ref="J1" pin="2" pinfunction="Pin_2" pintype="passive"/>
+      <node ref="R10" pin="2" pintype="passive"/>
+      <node ref="R12" pin="2" pintype="passive"/>
+      <node ref="R18" pin="1" pintype="passive"/>
+      <node ref="R7" pin="1" pintype="passive"/>
+      <node ref="R8" pin="2" pintype="passive"/>
+      <node ref="R9" pin="2" pintype="passive"/>
+      <node ref="TP6" pin="1" pinfunction="1" pintype="passive"/>
+    </net>
+    <net code="10" name="/OUT_DIV">
+      <node ref="R11" pin="1" pintype="passive"/>
+      <node ref="R16" pin="1" pintype="passive"/>
+      <node ref="R7" pin="2" pintype="passive"/>
+      <node ref="TP7" pin="1" pinfunction="1" pintype="passive"/>
+    </net>
+    <net code="11" name="/SHUNT_HI">
+      <node ref="C5" pin="1" pintype="passive"/>
+      <node ref="Q1" pin="1" pinfunction="C" pintype="passive"/>
+      <node ref="R10" pin="1" pintype="passive"/>
+      <node ref="R12" pin="1" pintype="passive"/>
+      <node ref="R14" pin="1" pintype="passive"/>
+      <node ref="R17" pin="1" pintype="passive"/>
+      <node ref="R8" pin="1" pintype="passive"/>
+      <node ref="R9" pin="1" pintype="passive"/>
+      <node ref="TP1" pin="1" pinfunction="1" pintype="passive"/>
+    </net>
+    <net code="12" name="/UART_RX_3V3">
+      <node ref="R24" pin="1" pintype="passive"/>
+      <node ref="U2" pin="3" pintype="passive"/>
+      <node ref="U3" pin="7" pinfunction="GPIO5" pintype="bidirectional"/>
+    </net>
+    <net code="13" name="/UART_RX_GND_ISOL">
+      <node ref="D3" pin="2" pinfunction="A" pintype="passive"/>
+      <node ref="J1" pin="6" pinfunction="Pin_6" pintype="passive"/>
+      <node ref="U2" pin="2" pintype="passive"/>
+    </net>
+    <net code="14" name="/UART_RX_SIG_ISOL">
+      <node ref="J1" pin="5" pinfunction="Pin_5" pintype="passive"/>
+      <node ref="R23" pin="1" pintype="passive"/>
+    </net>
+    <net code="15" name="/UART_TX_3V3">
+      <node ref="Q2" pin="2" pinfunction="S" pintype="passive"/>
+      <node ref="R4" pin="2" pintype="passive"/>
+      <node ref="U3" pin="6" pinfunction="GPIO4" pintype="bidirectional"/>
+    </net>
+    <net code="16" name="/UART_TX_SIG_5V">
+      <node ref="J1" pin="4" pinfunction="Pin_4" pintype="passive"/>
+      <node ref="R6" pin="1" pintype="passive"/>
+    </net>
+    <net code="17" name="/~{RESET}">
+      <node ref="J2" pin="10" pinfunction="~{RESET}" pintype="open_collector"/>
+      <node ref="R30" pin="2" pintype="passive"/>
+      <node ref="U3" pin="30" pinfunction="RUN" pintype="input"/>
+    </net>
+    <net code="18" name="GND">
+      <node ref="C3" pin="2" pintype="passive"/>
+      <node ref="C4" pin="2" pintype="passive"/>
+      <node ref="C5" pin="2" pintype="passive"/>
+      <node ref="C7" pin="2" pintype="passive"/>
+      <node ref="C8" pin="2" pintype="passive"/>
+      <node ref="C9" pin="2" pintype="passive"/>
+      <node ref="D2" pin="2" pinfunction="A" pintype="passive"/>
+      <node ref="J1" pin="3" pinfunction="Pin_3" pintype="passive"/>
+      <node ref="J2" pin="3" pinfunction="GND" pintype="power_in"/>
+      <node ref="J2" pin="5" pinfunction="GND" pintype="passive"/>
+      <node ref="Q4" pin="2" pinfunction="E" pintype="passive"/>
+      <node ref="R14" pin="2" pintype="passive"/>
+      <node ref="R16" pin="2" pintype="passive"/>
+      <node ref="R19" pin="2" pintype="passive"/>
+      <node ref="R20" pin="2" pintype="passive"/>
+      <node ref="R21" pin="2" pintype="passive"/>
+      <node ref="R24" pin="2" pintype="passive"/>
+      <node ref="TP9" pin="1" pinfunction="1" pintype="passive"/>
+      <node ref="U1" pin="4" pinfunction="V-" pintype="power_in"/>
+      <node ref="U3" pin="28" pinfunction="GND" pintype="power_in"/>
+      <node ref="U3" pin="3" pinfunction="GND" pintype="power_in"/>
+      <node ref="U3" pin="33" pinfunction="AGND" pintype="power_in"/>
+      <node ref="U3" pin="38" pinfunction="GND" pintype="bidirectional"/>
+      <node ref="U3" pin="42" pinfunction="GND" pintype="power_in"/>
+    </net>
+    <net code="19" name="Net-(C1-Pad1)">
+      <node ref="C1" pin="1" pintype="passive"/>
+      <node ref="R1" pin="1" pintype="passive"/>
+      <node ref="R11" pin="2" pintype="passive"/>
+      <node ref="U1" pin="2" pinfunction="-" pintype="input"/>
+    </net>
+    <net code="20" name="Net-(C6-Pad1)">
+      <node ref="C6" pin="1" pintype="passive"/>
+      <node ref="R17" pin="2" pintype="passive"/>
+      <node ref="R21" pin="1" pintype="passive"/>
+      <node ref="U1" pin="5" pinfunction="+" pintype="input"/>
+    </net>
+    <net code="21" name="Net-(C6-Pad2)">
+      <node ref="C6" pin="2" pintype="passive"/>
+      <node ref="R18" pin="2" pintype="passive"/>
+      <node ref="R22" pin="1" pintype="passive"/>
+      <node ref="U1" pin="6" pinfunction="-" pintype="input"/>
+    </net>
+    <net code="22" name="Net-(C7-Pad1)">
+      <node ref="C7" pin="1" pintype="passive"/>
+      <node ref="R15" pin="2" pintype="passive"/>
+      <node ref="R20" pin="1" pintype="passive"/>
+      <node ref="U1" pin="3" pinfunction="+" pintype="input"/>
+    </net>
+    <net code="23" name="Net-(D1-Pad2)">
+      <node ref="D1" pin="2" pinfunction="A" pintype="passive"/>
+      <node ref="D2" pin="1" pinfunction="K" pintype="passive"/>
+      <node ref="Q2" pin="3" pinfunction="D" pintype="passive"/>
+      <node ref="R3" pin="2" pintype="passive"/>
+      <node ref="R6" pin="2" pintype="passive"/>
+    </net>
+    <net code="24" name="Net-(D3-Pad1)">
+      <node ref="D3" pin="1" pinfunction="K" pintype="passive"/>
+      <node ref="R23" pin="2" pintype="passive"/>
+      <node ref="U2" pin="1" pintype="passive"/>
+    </net>
+    <net code="25" name="Net-(J2-Pad2)">
+      <node ref="J2" pin="2" pinfunction="SWDIO/TMS" pintype="bidirectional"/>
+      <node ref="U3" pin="43" pinfunction="SWDIO" pintype="bidirectional"/>
+    </net>
+    <net code="26" name="Net-(J2-Pad4)">
+      <node ref="J2" pin="4" pinfunction="SWDCLK/TCK" pintype="output"/>
+      <node ref="U3" pin="41" pinfunction="SWCLK" pintype="input"/>
+    </net>
+    <net code="27" name="Net-(Q1-Pad2)">
+      <node ref="Q1" pin="2" pinfunction="B" pintype="input"/>
+      <node ref="R5" pin="2" pintype="passive"/>
+    </net>
+    <net code="28" name="Net-(Q3-Pad1)">
+      <node ref="Q3" pin="1" pinfunction="B" pintype="input"/>
+      <node ref="R13" pin="2" pintype="passive"/>
+    </net>
+    <net code="29" name="Net-(Q4-Pad1)">
+      <node ref="Q4" pin="1" pinfunction="B" pintype="input"/>
+      <node ref="R28" pin="2" pintype="passive"/>
+    </net>
+    <net code="30" name="Net-(Q4-Pad3)">
+      <node ref="Q4" pin="3" pinfunction="C" pintype="passive"/>
+      <node ref="R26" pin="2" pintype="passive"/>
+      <node ref="R27" pin="1" pintype="passive"/>
+    </net>
+    <net code="31" name="Net-(R13-Pad1)">
+      <node ref="R13" pin="1" pintype="passive"/>
+      <node ref="U1" pin="1" pintype="output"/>
+    </net>
+    <net code="32" name="unconnected-(J2-Pad6)">
+      <node ref="J2" pin="6" pinfunction="SWO/TDO" pintype="input+no_connect"/>
+    </net>
+    <net code="33" name="unconnected-(J2-Pad7)">
+      <node ref="J2" pin="7" pinfunction="KEY" pintype="no_connect"/>
+    </net>
+    <net code="34" name="unconnected-(J2-Pad8)">
+      <node ref="J2" pin="8" pinfunction="NC/TDI" pintype="output+no_connect"/>
+    </net>
+    <net code="35" name="unconnected-(J2-Pad9)">
+      <node ref="J2" pin="9" pinfunction="GNDDetect" pintype="passive+no_connect"/>
+    </net>
+    <net code="36" name="unconnected-(U3-Pad1)">
+      <node ref="U3" pin="1" pinfunction="GPIO0" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="37" name="unconnected-(U3-Pad2)">
+      <node ref="U3" pin="2" pinfunction="GPIO1" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="38" name="unconnected-(U3-Pad4)">
+      <node ref="U3" pin="4" pinfunction="GPIO2" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="39" name="unconnected-(U3-Pad5)">
+      <node ref="U3" pin="5" pinfunction="GPIO3" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="40" name="unconnected-(U3-Pad8)">
+      <node ref="U3" pin="8" pinfunction="GND" pintype="power_in+no_connect"/>
+    </net>
+    <net code="41" name="unconnected-(U3-Pad9)">
+      <node ref="U3" pin="9" pinfunction="GPIO6" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="42" name="unconnected-(U3-Pad10)">
+      <node ref="U3" pin="10" pinfunction="GPIO7" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="43" name="unconnected-(U3-Pad11)">
+      <node ref="U3" pin="11" pinfunction="GPIO8" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="44" name="unconnected-(U3-Pad12)">
+      <node ref="U3" pin="12" pinfunction="GPIO9" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="45" name="unconnected-(U3-Pad13)">
+      <node ref="U3" pin="13" pinfunction="GND" pintype="power_in+no_connect"/>
+    </net>
+    <net code="46" name="unconnected-(U3-Pad14)">
+      <node ref="U3" pin="14" pinfunction="GPIO10" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="47" name="unconnected-(U3-Pad15)">
+      <node ref="U3" pin="15" pinfunction="GPIO11" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="48" name="unconnected-(U3-Pad16)">
+      <node ref="U3" pin="16" pinfunction="GPIO12" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="49" name="unconnected-(U3-Pad17)">
+      <node ref="U3" pin="17" pinfunction="GPIO13" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="50" name="unconnected-(U3-Pad18)">
+      <node ref="U3" pin="18" pinfunction="GND" pintype="power_in+no_connect"/>
+    </net>
+    <net code="51" name="unconnected-(U3-Pad19)">
+      <node ref="U3" pin="19" pinfunction="GPIO14" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="52" name="unconnected-(U3-Pad20)">
+      <node ref="U3" pin="20" pinfunction="GPIO15" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="53" name="unconnected-(U3-Pad22)">
+      <node ref="U3" pin="22" pinfunction="GPIO17" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="54" name="unconnected-(U3-Pad23)">
+      <node ref="U3" pin="23" pinfunction="GND" pintype="power_in+no_connect"/>
+    </net>
+    <net code="55" name="unconnected-(U3-Pad24)">
+      <node ref="U3" pin="24" pinfunction="GPIO18" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="56" name="unconnected-(U3-Pad25)">
+      <node ref="U3" pin="25" pinfunction="GPIO19" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="57" name="unconnected-(U3-Pad26)">
+      <node ref="U3" pin="26" pinfunction="GPIO20" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="58" name="unconnected-(U3-Pad27)">
+      <node ref="U3" pin="27" pinfunction="GPIO21" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="59" name="unconnected-(U3-Pad29)">
+      <node ref="U3" pin="29" pinfunction="GPIO22" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="60" name="unconnected-(U3-Pad31)">
+      <node ref="U3" pin="31" pinfunction="GPIO26_ADC0" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="61" name="unconnected-(U3-Pad32)">
+      <node ref="U3" pin="32" pinfunction="GPIO27_ADC1" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="62" name="unconnected-(U3-Pad35)">
+      <node ref="U3" pin="35" pinfunction="ADC_VREF" pintype="unspecified+no_connect"/>
+    </net>
+    <net code="63" name="unconnected-(U3-Pad37)">
+      <node ref="U3" pin="37" pinfunction="3V3_EN" pintype="input+no_connect"/>
+    </net>
+    <net code="64" name="unconnected-(U3-Pad40)">
+      <node ref="U3" pin="40" pinfunction="VBUS" pintype="unspecified+no_connect"/>
+    </net>
+  </nets>
+</export>

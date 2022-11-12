@@ -44,8 +44,10 @@ void SCBS::Update() {
                     DISPacketHandler(DISPacket(uart_rx_buf_));
                     break;
                 case BSPacket::MRD:
+                    MRDPacketHandler(MRDPacket(uart_rx_buf_));
                     break;
                 case BSPacket::MWR:
+                    MWRPacketHandler(MWRPacket(uart_rx_buf_));
                     break;
                 case BSPacket::SRD:
                     break;
@@ -89,15 +91,26 @@ void SCBS::DISPacketHandler(DISPacket packet_in) {
     }
 }
 
-void SCBS::MRDPacketHandler(MRDPacket packet_in) {
+void SCBS::MWRPacketHandler(MWRPacket packet_in) {
     
 }
 
 void SCBS::MRDPacketHandler(MRDPacket packet_in) {
     if (packet_in.IsValid()) {
-
+        printf("SCBS::MRDPacketHandler: Formed a valid MRD packet!\r\n");
+        if (packet_in.num_values >= MRDPacket::kMaxNumValues) {
+            printf("SCBS::MRDPacketHandler: Incoming packet had too many values! Throwing a tantrum to draw attention.\r\n");
+            return; // drop incoming packet
+        }
+        // Frankenstein new value into the received packet buffer and send it to the next device.
+        // TODO: populate the value as necessary.
+        char * my_value = (char *)"hyello";
+        strncpy(packet_in.values[packet_in.num_values], my_value, MRDPacket::kMaxPacketFieldLen);
+        MRDPacket packet_out = MRDPacket(packet_in.reg_addr, packet_in.values, packet_in.num_values+1);
+        TransmitPacket(packet_out);
+    } else {
+        printf("SCBS::MRDPacketHandler: Formed an MRD packet but it wasn't valid!\r\n");
     }
-
 }
 
 void SCBS::FlushUARTBuf() {
