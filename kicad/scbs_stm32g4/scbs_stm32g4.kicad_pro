@@ -353,7 +353,7 @@
     "pinned_symbol_libs": []
   },
   "meta": {
-    "filename": "scbs_pico.kicad_pro",
+    "filename": "scbs_stm32g4.kicad_pro",
     "version": 1
   },
   "net_settings": {

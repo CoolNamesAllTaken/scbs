@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "scbs-master"
+version = "0.1.0"
+description = "Utilities for Single Cell Battery Simulator master computer."
+authors = ["John McNelly <jkailimcnelly@gmail.com>"]
+readme = "README.md"
+packages = [{include = "scbs_master"}]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+pyserial = "^3.5"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

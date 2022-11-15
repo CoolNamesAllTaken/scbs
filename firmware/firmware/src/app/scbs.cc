@@ -1,7 +1,17 @@
 #include "scbs.hh"
 #include <stdio.h> // for printing
-#include "hardware/gpio.h"
+#include <stdlib.h> // for strtof
 
+const uint16_t kMaxPWMCount = 1000; // Clock is 125MHz, shoot for 125kHz PWM.
+const uint16_t kPWMDefaultDuty = 0; // out of kMaxPWMCount.
+const float kPowerSupplyVoltage = 5.0f; // [V]
+const float kMaxOutputVoltage = 4.5f; // [V]
+const float kMinOutputVoltage = 0.0f; // [V]
+
+const float kOutputVoltageCalCoeffX3 = -0.006624709f;
+const float kOutputVoltageCalCoeffX2 = 0.07218648f;
+const float kOutputVoltageCalCoeffX = -0.278278555f;
+const float kOutputVoltageCalCoeffConst = 0.079586014f;
 
 /** Public Functions **/
 
@@ -10,9 +20,11 @@ SCBS::SCBS(SCBSConfig_t config) {
 }
 
 void SCBS::Init() {
+    // Set up status LED.
     gpio_init(config_.led_pin);
     gpio_set_dir(config_.led_pin, GPIO_OUT);
 
+    // Set up comms UART.
     uart_init(config_.uart_id, config_.uart_baud);
     gpio_set_function(config_.uart_tx_pin, GPIO_FUNC_UART);
     gpio_set_function(config_.uart_rx_pin, GPIO_FUNC_UART);
@@ -24,6 +36,14 @@ void SCBS::Init() {
     memset(uart_rx_buf_, '\0', kMaxUARTBufLen);
     uart_rx_buf_len_ = 0;
 
+    // Set up PWM output for voltage control.
+    gpio_set_function(config_.pwm_pin, GPIO_FUNC_PWM);
+    // Figure out which slice we just connected to the LED pin
+    uint slice_num = pwm_gpio_to_slice_num(config_.pwm_pin);
+    pwm_set_wrap(slice_num, kMaxPWMCount);
+    pwm_set_chan_level(slice_num, config_.pwm_channel, kPWMDefaultDuty);
+    pwm_set_enabled(slice_num, true);
+
     // give em a little blink
     gpio_put(config_.led_pin, 1);
     sleep_ms(100);
@@ -33,6 +53,7 @@ void SCBS::Init() {
 }
 
 void SCBS::Update() {
+    // Communication Process
     if (ReceivePacket() != 0) {
         gpio_put(config_.led_pin, 1);
 
@@ -66,7 +87,8 @@ void SCBS::Update() {
         gpio_put(config_.led_pin, 0);
     }
     
-    
+    // GPIO Process
+    SetOutputVoltage(output_voltage_);
 }
 
 uint16_t SCBS::GetCellID() {
@@ -92,7 +114,33 @@ void SCBS::DISPacketHandler(DISPacket packet_in) {
 }
 
 void SCBS::MWRPacketHandler(MWRPacket packet_in) {
-    
+    if (packet_in.IsValid()) {
+        printf("SCBS::MWRPacketHandler: Formed a valid MWR packet!\r\n");
+
+        switch(packet_in.reg_addr) {
+            case kRegAddrSetOutputVoltage: {
+                float new_output_voltage = strtof(packet_in.value, NULL);
+                if (new_output_voltage > kMaxOutputVoltage) {
+                    new_output_voltage = kMaxOutputVoltage;
+                } else if (new_output_voltage < kMinOutputVoltage) {
+                    new_output_voltage = kMinOutputVoltage;
+                }
+                output_voltage_ = new_output_voltage;
+                break;
+            } case kRegAddrReadOutputCurrent: {
+                printf("SCBS::MWRPacketHandler: Writing to register 0x%x is not supported.\r\n", packet_in.reg_addr);
+                return; // drop incoming packet.
+                break;
+            } default: {
+                printf("SCBS::MWRPacketHandler: Register address 0x%x was not recognized.\r\n", packet_in.reg_addr);
+                return; // drop incoming packet.
+            }
+        }
+        // Pass to next device in the chain.
+        TransmitPacket(packet_in);
+    } else {
+        printf("SCBS::MRDPacketHandler: Formed an MRD packet but it wasn't valid!\r\n");
+    }
 }
 
 void SCBS::MRDPacketHandler(MRDPacket packet_in) {
@@ -102,9 +150,20 @@ void SCBS::MRDPacketHandler(MRDPacket packet_in) {
             printf("SCBS::MRDPacketHandler: Incoming packet had too many values! Throwing a tantrum to draw attention.\r\n");
             return; // drop incoming packet
         }
+        char my_value[BSPacket::kMaxPacketFieldLen] = "";
+        memset(my_value, '\0', BSPacket::kMaxPacketFieldLen);
+        switch(packet_in.reg_addr) {
+            case kRegAddrSetOutputVoltage:
+                snprintf(my_value, BSPacket::kMaxPacketFieldLen-1, "%.2f", output_voltage_);
+                break;
+            case kRegAddrReadOutputCurrent:
+                snprintf(my_value, BSPacket::kMaxPacketFieldLen-1, "%.2f", output_current_);
+                break;
+            default:
+                printf("SCBS::MRDPacketHandler: Register address 0x%x was not recognized.\r\n", packet_in.reg_addr);
+                return; // drop incoming packet.
+        }
         // Frankenstein new value into the received packet buffer and send it to the next device.
-        // TODO: populate the value as necessary.
-        char * my_value = (char *)"hyello";
         strncpy(packet_in.values[packet_in.num_values], my_value, MRDPacket::kMaxPacketFieldLen);
         MRDPacket packet_out = MRDPacket(packet_in.reg_addr, packet_in.values, packet_in.num_values+1);
         TransmitPacket(packet_out);
@@ -149,4 +208,23 @@ uint16_t SCBS::ReceivePacket() {
         }
     }
     return 0; // Don't alert anyone until the UARTRxBuf gets a full packet.
+}
+
+void SCBS::SetOutputVoltage(float voltage) {
+    // Relies on MWR handler to rail the voltage to nice setpoints. Absolute rails here.
+    float voltage2 = voltage*voltage;
+    float voltage3 = voltage2*voltage;
+    float estimated_offset = 
+        voltage3*kOutputVoltageCalCoeffX3 + 
+        voltage2*kOutputVoltageCalCoeffX2 + 
+        voltage*kOutputVoltageCalCoeffX + 
+        kOutputVoltageCalCoeffConst;
+    voltage -= estimated_offset; // calibrate
+    if (voltage > kPowerSupplyVoltage) {
+        voltage = kPowerSupplyVoltage;
+    } else if (voltage < 0.0f) {
+        voltage = 0.0f;
+    }
+    uint16_t duty = 1000 - static_cast<uint16_t>(voltage / kPowerSupplyVoltage * kMaxPWMCount); // out of kMaxPWMCount
+    pwm_set_chan_level(pwm_gpio_to_slice_num(config_.pwm_pin), config_.pwm_channel, duty);
 }

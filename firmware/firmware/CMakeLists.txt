@@ -42,4 +42,5 @@ pico_enable_stdio_uart(scbs 0) # disable STDIO UART
 target_link_libraries(scbs 
     pico_stdlib
     pico_float # for math functions
+    hardware_pwm
 )

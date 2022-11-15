@@ -10,9 +10,6 @@
 #define SCBS_NUMBERS_BASE 10
 #define SCBS_ADDR_BASE 16
 #define SCBS_CHECKSUM_BASE 16
-// #define LATITUDE_DEGREES_NUM_DIGITS 2
-// #define LONGITUDE_DEGREES_NUM_DIGITS 3
-// #define MINUTES_PER_DEGREE 60.0f
 
 #define MIN(a,b) (((a)<(b))?(a):(b))
 #define MAX(a,b) (((a)>(b))?(a):(b))
@@ -341,12 +338,13 @@ uint16_t MRDPacket::ToString(char to_str_buf[kMaxPacketLen]) {
         reg_addr
     );
     for (uint16_t i = 0; i < num_values; i++) {
-        if (strlen(contents_str) >= kMaxPacketContentsLen-kMaxPacketFieldLen) {
-            // use >= since leaving room for delimiters
+        if (strlen(contents_str) >= kMaxPacketContentsLen-kMaxPacketFieldLen-1) {
+            // Use >= and -1 since leaving room for delimiters and EOF.
             printf("MRDPacket::ToString: Ran out of room for values!\r\n");
             break;
         }
-        char value_str[kMaxPacketFieldLen];
+        // Extra char for delimiter (still ends up as kMaxPacketFieldLen since no EOF when neighbors installed).
+        char value_str[kMaxPacketFieldLen+1];
         snprintf(value_str, kMaxPacketFieldLen+1, ",%s", values[i]);
         strncat(contents_str, value_str, kMaxPacketFieldLen+1); // +1 for delimiter
     }
