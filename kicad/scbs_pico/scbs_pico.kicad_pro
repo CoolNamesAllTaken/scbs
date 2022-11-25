@@ -387,7 +387,7 @@
       "idf": "",
       "netlist": "",
       "specctra_dsn": "",
-      "step": "",
+      "step": "fab/scbs_pico.step",
       "vrml": ""
     },
     "page_layout_descr_file": ""
