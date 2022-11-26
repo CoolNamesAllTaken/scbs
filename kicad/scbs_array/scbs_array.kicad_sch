@@ -2199,7 +2199,7 @@
     (effects (font (size 1.27 1.27)) (justify left bottom))
     (uuid 61f62cfb-d57f-41db-9b23-6a605dfafbcd)
   )
-  (text "I_z,max=50mA\nI_z=10mA @ V_in=12V" (at 38.1 72.39 0)
+  (text "I_z,max=50mA\nI_z=1mA @ V_in=12V" (at 38.1 72.39 0)
     (effects (font (size 1.27 1.27)) (justify left bottom))
     (uuid 7a744679-e280-4588-95de-8b4d51a56ba9)
   )
@@ -2838,7 +2838,7 @@
     (property "Reference" "R1" (id 0) (at 52.07 59.6899 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Value" "200R" (id 1) (at 52.07 62.2299 0)
+    (property "Value" "2k" (id 1) (at 52.07 62.2299 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Footprint" "Resistor_SMD:R_0805_2012Metric" (id 2) (at 50.546 61.214 90)
@@ -3239,7 +3239,7 @@
       (reference "Q1") (unit 1) (value "FQP27P06") (footprint "Package_TO_SOT_THT:TO-220-3_Horizontal_TabDown")
     )
     (path "/aba6e3da-b649-418e-ab20-797560fadc22"
-      (reference "R1") (unit 1) (value "200R") (footprint "Resistor_SMD:R_0805_2012Metric")
+      (reference "R1") (unit 1) (value "2k") (footprint "Resistor_SMD:R_0805_2012Metric")
     )
     (path "/0f960744-e721-48cb-af3d-c1f0f2d83444"
       (reference "SCBS1") (unit 1) (value "SCBS_Pico") (footprint "lib_fp:SCBS_Pico")
