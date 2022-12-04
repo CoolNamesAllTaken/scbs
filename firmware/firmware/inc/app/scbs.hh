@@ -5,6 +5,7 @@
 #include "hardware/gpio.h" // for UART inst
 #include "hardware/uart.h"
 #include "hardware/pwm.h"
+#include "hardware/adc.h"
 #include "scbs_comms.hh"
 
 #include <stdint.h>
@@ -27,6 +28,9 @@ public:
 
         uint16_t pwm_pin = 16;
         pwm_chan pwm_channel = PWM_CHAN_A;
+
+        uint16_t csense_pin = 28;
+        uint16_t csense_adc_input = 2;
 
         uint16_t led_pin = 25;
     } SCBSConfig_t;
@@ -51,6 +55,8 @@ private:
     uint16_t ReceivePacket();
 
     void SetOutputVoltage(float voltage);
+    void ReadOutputCurrent();
+    float GetOutputCurrent();
 
     SCBSConfig_t config_;
 
@@ -58,8 +64,8 @@ private:
     uint16_t uart_rx_buf_len_ = 0;
 
     uint16_t cell_id_;
-    float output_voltage_ = 0.0f;
-    float output_current_ = 0.0f;
+    float output_voltage_ = 0.0f; // [V]
+    float output_current_ = 0.0f; // [mA]
 };
 
 #endif /* _SCBS_HH_ */

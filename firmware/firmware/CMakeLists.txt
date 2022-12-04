@@ -43,4 +43,5 @@ target_link_libraries(scbs
     pico_stdlib
     pico_float # for math functions
     hardware_pwm
+    hardware_adc
 )

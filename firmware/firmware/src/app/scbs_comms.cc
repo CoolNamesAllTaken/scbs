@@ -45,7 +45,7 @@ void BSPacket::FromString(char from_str_buf[kMaxPacketLen]) {
     uint8_t transmitted_checksum = static_cast<uint8_t>(strtol(end_token_ptr+1, NULL, SCBS_CHECKSUM_BASE));
     uint8_t expected_checksum = CalculateChecksum();
     if (expected_checksum != transmitted_checksum) {
-        printf("BSPacket::FromString(): Encountered a bad checksum, expected %02x but got %02x.\r\n",
+        printf("BSPacket::FromString(): Encountered a bad checksum, expected %02X but got %02X.\r\n",
             expected_checksum,
             transmitted_checksum);
         return; // guard against bad checksum
@@ -91,7 +91,7 @@ uint16_t BSPacket::PacketizeContents(char packet_contents_str[kMaxPacketContents
     );
     uint16_t checksum = BSPacket::CalculateChecksum();
     char checksum_str[kPacketTailLen];
-    snprintf(checksum_str, kPacketTailLen, "%02x", checksum);
+    snprintf(checksum_str, kPacketTailLen, "%02X", checksum);
     strcat(packet_str_, checksum_str);
     if (to_str_buf != NULL) {
         strncpy(to_str_buf, packet_str_, kMaxPacketLen);
@@ -245,7 +245,7 @@ void MWRPacket::FromString(char from_str_buf[kMaxPacketLen]) {
     }
 
     char * reg_addr_str = strtok(NULL, SCBS_PACKET_DELIM);
-    reg_addr = (uint16_t)strtoul(reg_addr_str, NULL, SCBS_ADDR_BASE);
+    reg_addr = (uint32_t)strtoul(reg_addr_str, NULL, SCBS_ADDR_BASE);
 
     char * value_str = strtok(NULL, SCBS_PACKET_DELIM);
     char * end_token_ptr = strchr(value_str, '*');
@@ -260,7 +260,7 @@ void MWRPacket::FromString(char from_str_buf[kMaxPacketLen]) {
 */
 uint16_t MWRPacket::ToString(char to_str_buf[kMaxPacketLen]) {
     char contents_str[kMaxPacketContentsLen];
-    snprintf(contents_str, kMaxPacketContentsLen, "%x,%s",
+    snprintf(contents_str, kMaxPacketContentsLen, "%X,%s",
         reg_addr,
         value
     );
@@ -269,7 +269,12 @@ uint16_t MWRPacket::ToString(char to_str_buf[kMaxPacketLen]) {
 }
 
 /** MRD Packet **/
-
+/**
+ * @brief Construct MRDPacket from values.
+ * @param[in] reg_addr_in Address of register to read from on all cells.
+ * @param[in] values_in Array of values being appended to by cells as they are read.
+ * @param[in] num_values_in Number of cells that have been read so far.
+*/
 MRDPacket::MRDPacket(uint32_t reg_addr_in, char values_in[][kMaxPacketFieldLen], uint16_t num_values_in) {
     packet_type_ = MRD;
 
@@ -285,11 +290,19 @@ MRDPacket::MRDPacket(uint32_t reg_addr_in, char values_in[][kMaxPacketFieldLen],
     ToString(NULL);
 }
 
+/**
+ * @brief Fills MRDPacket field values from a string buffer.
+ * @param[in] from_str_buf String buffer to read.
+*/
 MRDPacket::MRDPacket(char from_str_buf[kMaxPacketLen]) {
     packet_type_ = MRD;
     FromString(from_str_buf);
 }
 
+/**
+ * @brief Fill in an MRDPacket's values from an input string.
+ * @param[in] from_str_buf String buffer to extract MRDPacket values from.
+*/
 void MRDPacket::FromString(char from_str_buf[kMaxPacketLen]) {
     for (uint16_t i = 0; i < kMaxNumValues; i++) {
         memset(values[i], '\0', kMaxPacketFieldLen);
@@ -316,7 +329,7 @@ void MRDPacket::FromString(char from_str_buf[kMaxPacketLen]) {
     }
 
     char * reg_addr_str = strtok(NULL, SCBS_PACKET_DELIM);
-    reg_addr = (uint16_t)strtoul(reg_addr_str, NULL, SCBS_ADDR_BASE);
+    reg_addr = (uint32_t)strtoul(reg_addr_str, NULL, SCBS_ADDR_BASE);
 
     char * value_str = strtok(NULL, SCBS_PACKET_DELIM);
     while(value_str != NULL) {
@@ -332,9 +345,14 @@ void MRDPacket::FromString(char from_str_buf[kMaxPacketLen]) {
     is_valid_ = true; // Got here without aborting, good enough!
 }
 
+/**
+ * @brief Generate an MRDPacket string from its values.
+ * @param[out] to_str_buf String buffer to write MRDPacket string into.
+ * @retval Length of MRDPacket string that was written.
+*/
 uint16_t MRDPacket::ToString(char to_str_buf[kMaxPacketLen]) {
     char contents_str[kMaxPacketContentsLen];
-    snprintf(contents_str, kMaxPacketContentsLen, "%x",
+    snprintf(contents_str, kMaxPacketContentsLen, "%X",
         reg_addr
     );
     for (uint16_t i = 0; i < num_values; i++) {
@@ -348,6 +366,233 @@ uint16_t MRDPacket::ToString(char to_str_buf[kMaxPacketLen]) {
         snprintf(value_str, kMaxPacketFieldLen+1, ",%s", values[i]);
         strncat(contents_str, value_str, kMaxPacketFieldLen+1); // +1 for delimiter
     }
+    BSPacket::PacketizeContents(contents_str, to_str_buf); // Send to parent class for header and tail.
+    return strlen(packet_str_);
+}
+
+/** SWR Packet **/
+
+/**
+ * @brief Construct SWRPacket from values.
+ * @param[in] cell_id_in ID of cell to write to.
+ * @param[in] reg_addr_in Register to write to on target cell.
+ * @param[in] value_in Value to write to register on target cell.
+*/
+SWRPacket::SWRPacket(uint16_t cell_id_in, uint32_t reg_addr_in, char value_in[kMaxPacketFieldLen]) {
+    packet_type_ = SWR;
+
+    // Populate values.
+    cell_id = cell_id_in;
+    reg_addr = reg_addr_in;
+    memset(value, '\0', kMaxPacketFieldLen);
+    strncpy(value, value_in, kMaxPacketFieldLen-1); // make sure to always end with '\0'
+
+    // Populate packet_str_.
+    ToString(NULL);
+}
+
+/**
+ * @brief Construct SWRPacket from string.
+ * @param[in] from_str_buf String buffer contianing SWRPacket string to read.
+*/
+SWRPacket::SWRPacket(char from_str_buf[kMaxPacketLen]) {
+    packet_type_ = SWR;
+    FromString(from_str_buf);
+}
+
+/**
+ * @brief Fill in an SWRPacket's values from an input string.
+ * @param[in] from_str_buf String buffer to extract SWRPacket values from.
+*/
+void SWRPacket::FromString(char from_str_buf[kMaxPacketLen]) {
+    memset(value, '\0', kMaxPacketFieldLen); // make value blank in case stuff fails
+
+    BSPacket::FromString(from_str_buf);
+    if (!is_valid_) {
+        printf("SWRPacket::FromString(): Failed due to invalid packet.\r\n");
+        return;
+    }
+
+    char strtok_buf[kMaxPacketLen];
+
+    strncpy(strtok_buf, from_str_buf, kMaxPacketLen); // strtok modifies the input string, be safe!
+    char * header_str = strtok(strtok_buf, SCBS_PACKET_DELIM);
+    if (strcmp(header_str, "$BSSWR")) {
+        // Header is wrong (different packet type).
+        printf("SWRPacket::FromString(): Failed due to invalid header, expected $BSSWR but got %s.\r\n", header_str);
+        return;
+    }
+
+    char * cell_id_str = strtok(NULL, SCBS_PACKET_DELIM);
+    cell_id = (uint16_t)strtoul(cell_id_str, NULL, SCBS_NUMBERS_BASE);
+
+    char * reg_addr_str = strtok(NULL, SCBS_PACKET_DELIM);
+    reg_addr = (uint32_t)strtoul(reg_addr_str, NULL, SCBS_ADDR_BASE);
+
+    char * value_str = strtok(NULL, SCBS_PACKET_DELIM);
+    char * end_token_ptr = strchr(value_str, '*');
+    strncpy(value, value_str, MIN(end_token_ptr - value_str, kMaxPacketFieldLen-1));
+
+    is_valid_ = true; // Got here without aborting, good enough!
+}
+
+/**
+ * @brief Writes a SWRPacket string containing field values to a string buffer.
+ * @param[out] to_str_buf String buffer to write packet to.
+*/
+uint16_t SWRPacket::ToString(char to_str_buf[kMaxPacketLen]) {
+    char contents_str[kMaxPacketContentsLen];
+    snprintf(contents_str, kMaxPacketContentsLen, "%d,%X,%s",
+        cell_id,
+        reg_addr,
+        value
+    );
+    BSPacket::PacketizeContents(contents_str, to_str_buf); // Send to parent class for header and tail.
+    return strlen(packet_str_);
+}
+
+/** SRD Packet **/
+
+/**
+ * @brief Construct SRDPacket from values.
+ * @param[in] cell_id_in Cell ID to read from.
+ * @param[in] reg_addr_in Target register to read from.
+*/
+SRDPacket::SRDPacket(uint16_t cell_id_in, uint32_t reg_addr_in) {
+    packet_type_ = SRD;
+
+    // Populate values.
+    cell_id = cell_id_in;
+    reg_addr = reg_addr_in;
+
+    // Populate packet_str_.
+    ToString(NULL);
+}
+
+/**
+ * @brief Construct SRDPacket from string buffer.
+ * @param[in] from_str_buf String buffer to parse for creating SRDPacket.
+*/
+SRDPacket::SRDPacket(char from_str_buf[kMaxPacketLen]) {
+    packet_type_ = SRD;
+    FromString(from_str_buf);
+}
+
+/**
+ * @brief Build SRDPacket from string buffer.
+ * @param[in] from_str_buf String buffer to parse into SRDPacket.
+*/
+void SRDPacket::FromString(char from_str_buf[kMaxPacketLen]) {
+    BSPacket::FromString(from_str_buf);
+    if (!is_valid_) {
+        printf("SRDPacket::FromString(): Failed due to invalid packet.\r\n");
+        return;
+    }
+
+    is_valid_ = false; // set false again so if something SRD specific goes wrong it shows up
+    char strtok_buf[kMaxPacketLen];
+
+    strncpy(strtok_buf, from_str_buf, kMaxPacketLen); // strtok modifies the input string, be safe!
+    char * header_str = strtok(strtok_buf, SCBS_PACKET_DELIM);
+    if (strcmp(header_str, "$BSSRD")) {
+        // Header is wrong (different packet type).
+        printf("SRDPacket::FromString(): Failed due to invalid header, expected $BSSRD but got %s.\r\n", header_str);
+        return;
+    }
+
+    char * cell_id_str = strtok(NULL, SCBS_PACKET_DELIM);
+    cell_id = (uint16_t)strtoul(cell_id_str, NULL, SCBS_NUMBERS_BASE);
+
+    char * reg_addr_str = strtok(NULL, SCBS_PACKET_DELIM);
+    reg_addr = (uint32_t)strtoul(reg_addr_str, NULL, SCBS_ADDR_BASE);
+    
+    is_valid_ = true; // Got here without aborting, good enough!
+}
+
+/**
+ * @brief Create SRDPacket string from object contents.
+ * @param[out] to_str_buf String buffer to write SRDPacket string into.
+*/
+uint16_t SRDPacket::ToString(char to_str_buf[kMaxPacketLen]) {
+    char contents_str[kMaxPacketContentsLen];
+    snprintf(contents_str, kMaxPacketContentsLen, "%d,%X",
+        cell_id,
+        reg_addr
+    );
+    BSPacket::PacketizeContents(contents_str, to_str_buf); // Send to parent class for header and tail.
+    return strlen(packet_str_);
+}
+
+/** SRS Packet **/
+/**
+ * @brief Construct SRSPacket from values.
+ * @param[in] cell_id_in Cell ID that the response is being sent from.
+ * @param[in] value_in Response value.
+*/
+SRSPacket::SRSPacket(uint16_t cell_id_in, char value_in[kMaxPacketFieldLen]) {
+    packet_type_ = SRS;
+
+    // Populate values.
+    cell_id = cell_id_in;
+    memset(value, '\0', kMaxPacketFieldLen);
+    strncpy(value, value_in, kMaxPacketFieldLen-1); // make sure to always end with '\0'
+
+    // Populate packet_str_.
+    ToString(NULL);
+}
+
+/**
+ * @brief Construct SRSPacket from string.
+ * @param[in] from_str_buf String buffer contianing SRSPacket string to read.
+*/
+SRSPacket::SRSPacket(char from_str_buf[kMaxPacketLen]) {
+    packet_type_ = SRS;
+    FromString(from_str_buf);
+}
+
+/**
+ * @brief Read values from an SRSPacket string.
+ * @param[in] from_str_buf String buffer containing SRSPacket.
+*/
+void SRSPacket::FromString(char from_str_buf[kMaxPacketLen]) {
+    memset(value, '\0', kMaxPacketFieldLen); // make value blank in case stuff fails
+
+    BSPacket::FromString(from_str_buf);
+    if (!is_valid_) {
+        printf("SRSPacket::FromString(): Failed due to invalid packet.\r\n");
+        return;
+    }
+
+    char strtok_buf[kMaxPacketLen];
+
+    strncpy(strtok_buf, from_str_buf, kMaxPacketLen); // strtok modifies the input string, be safe!
+    char * header_str = strtok(strtok_buf, SCBS_PACKET_DELIM);
+    if (strcmp(header_str, "$BSSRS")) {
+        // Header is wrong (different packet type).
+        printf("SRSPacket::FromString(): Failed due to invalid header, expected $BSSRS but got %s.\r\n", header_str);
+        return;
+    }
+
+    char * cell_id_str = strtok(NULL, SCBS_PACKET_DELIM);
+    cell_id = (uint16_t)strtoul(cell_id_str, NULL, SCBS_NUMBERS_BASE);
+
+    char * value_str = strtok(NULL, SCBS_PACKET_DELIM);
+    char * end_token_ptr = strchr(value_str, '*');
+    strncpy(value, value_str, MIN(end_token_ptr - value_str, kMaxPacketFieldLen-1));
+
+    is_valid_ = true; // Got here without aborting, good enough!
+}
+
+/**
+ * @brief Create an SRSPacket string from object values.
+ * @param[out] to_str_buf String buffer to write SRSPacket string into.
+*/
+uint16_t SRSPacket::ToString(char to_str_buf[kMaxPacketLen]) {
+    char contents_str[kMaxPacketContentsLen];
+    snprintf(contents_str, kMaxPacketContentsLen, "%d,%s",
+        cell_id,
+        value
+    );
     BSPacket::PacketizeContents(contents_str, to_str_buf); // Send to parent class for header and tail.
     return strlen(packet_str_);
 }

@@ -4,7 +4,7 @@
 
 const uint16_t kMaxPWMCount = 1000; // Clock is 125MHz, shoot for 125kHz PWM.
 const uint16_t kPWMDefaultDuty = 0; // out of kMaxPWMCount.
-const float kPowerSupplyVoltage = 5.0f; // [V]
+const float kPowerSupplyVoltage5V = 5.0f; // [V]
 const float kMaxOutputVoltage = 4.5f; // [V]
 const float kMinOutputVoltage = 0.0f; // [V]
 
@@ -12,6 +12,11 @@ const float kOutputVoltageCalCoeffX3 = -0.006624709f;
 const float kOutputVoltageCalCoeffX2 = 0.07218648f;
 const float kOutputVoltageCalCoeffX = -0.278278555f;
 const float kOutputVoltageCalCoeffConst = 0.079586014f;
+
+// const float kPowerSupplyVoltage3V3 = 3.3f;
+const uint16_t kMaxADCCount = 1<<12;
+// const float kADCConversionFactor = kPowerSupplyVoltage3V3 / kMaxADCCount;
+const float kMaxCsenseCurrent = 200.0f;
 
 /** Public Functions **/
 
@@ -43,6 +48,10 @@ void SCBS::Init() {
     pwm_set_wrap(slice_num, kMaxPWMCount);
     pwm_set_chan_level(slice_num, config_.pwm_channel, kPWMDefaultDuty);
     pwm_set_enabled(slice_num, true);
+
+    // Set up current sense ADC input.
+    adc_init();
+    adc_gpio_init(config_.csense_pin);
 
     // give em a little blink
     gpio_put(config_.led_pin, 1);
@@ -89,6 +98,7 @@ void SCBS::Update() {
     
     // GPIO Process
     SetOutputVoltage(output_voltage_);
+    ReadOutputCurrent();
 }
 
 uint16_t SCBS::GetCellID() {
@@ -220,11 +230,21 @@ void SCBS::SetOutputVoltage(float voltage) {
         voltage*kOutputVoltageCalCoeffX + 
         kOutputVoltageCalCoeffConst;
     voltage -= estimated_offset; // calibrate
-    if (voltage > kPowerSupplyVoltage) {
-        voltage = kPowerSupplyVoltage;
+    if (voltage > kPowerSupplyVoltage5V) {
+        voltage = kPowerSupplyVoltage5V;
     } else if (voltage < 0.0f) {
         voltage = 0.0f;
     }
-    uint16_t duty = 1000 - static_cast<uint16_t>(voltage / kPowerSupplyVoltage * kMaxPWMCount); // out of kMaxPWMCount
+    uint16_t duty = 1000 - static_cast<uint16_t>(voltage / kPowerSupplyVoltage5V * kMaxPWMCount); // out of kMaxPWMCount
     pwm_set_chan_level(pwm_gpio_to_slice_num(config_.pwm_pin), config_.pwm_channel, duty);
+}
+
+void SCBS::ReadOutputCurrent() {
+    adc_select_input(config_.csense_adc_input);
+    uint16_t adc_counts = adc_read();
+    output_current_ = adc_counts * kMaxCsenseCurrent / kMaxADCCount;
+}
+
+float SCBS::GetOutputCurrent() {
+    return output_current_;
 }

@@ -99,4 +99,44 @@ public:
     uint16_t num_values;
 };
 
+// Battery Simulator Single Write Packet
+class SWRPacket : public BSPacket {
+public:
+    SWRPacket(uint16_t cell_id_in, uint32_t reg_addr_in, char value_in[kMaxPacketFieldLen]);
+    SWRPacket(char from_str_buf[kMaxPacketLen]);
+
+    void FromString(char from_str_buf[kMaxPacketLen]);
+    uint16_t ToString(char to_str_buf[kMaxPacketLen]);
+
+    uint16_t cell_id = 0;
+    uint32_t reg_addr = 0x00u;
+    char value[kMaxPacketFieldLen];
+};
+
+// Battery Simulator Single Read Packet
+class SRDPacket : public BSPacket {
+public:
+    SRDPacket(uint16_t cell_id_in, uint32_t reg_addr_in);
+    SRDPacket(char from_str_buf[kMaxPacketLen]);
+
+    void FromString(char from_str_buf[kMaxPacketLen]);
+    uint16_t ToString(char to_str_buf[kMaxPacketLen]);
+
+    uint16_t cell_id = 0;
+    uint32_t reg_addr = 0x00u;
+};
+
+// Battery Simulator Single Response Packet
+class SRSPacket : public BSPacket {
+public:
+    SRSPacket(uint16_t cell_id_in, char value_in[kMaxPacketFieldLen]);
+    SRSPacket(char from_str_buf[kMaxPacketLen]);
+
+    void FromString(char from_str_buf[kMaxPacketLen]);
+    uint16_t ToString(char to_str_buf[kMaxPacketLen]);
+
+    uint16_t cell_id = 0;
+    char value[kMaxPacketFieldLen];
+};
+
 #endif /* _SCBS_COMMS_HH_ */

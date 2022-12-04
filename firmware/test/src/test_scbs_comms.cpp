@@ -271,3 +271,45 @@ TEST(MRDPacketConstructor, FromStringTooLong) {
 	ASSERT_EQ(packet.reg_addr, 0x00u);
 	ASSERT_EQ(packet.num_values, 0);
 }
+
+TEST(SWRPacketConstructor, ValuesToStringTooLong) {
+	SWRPacket packet = SWRPacket(53, 0xDEADBEEF, (char *)"hi there sir what is up");
+	char str_buf[BSPacket::kMaxPacketLen];
+	packet.ToString(str_buf);
+	ASSERT_STREQ(str_buf, "$BSSWR,53,DEADBEEF,hi there sir what i*09");
+}
+
+TEST(SWRPacketConstructor, FromStringValid) {
+	char str_buf[BSPacket::kMaxPacketLen] = "$BSSWR,53,DEADBEEF,hi there sir what i*09";
+	SWRPacket packet = SWRPacket(str_buf);
+	ASSERT_TRUE(packet.IsValid());
+	ASSERT_EQ(packet.cell_id, 53);
+	ASSERT_EQ(packet.reg_addr, 0xDEADBEEF);
+	ASSERT_STREQ(packet.value, "hi there sir what i");
+}
+
+TEST(SRDPacketConstructor, ValuesToString) {
+	SRDPacket packet = SRDPacket(67, 0xBEEFBEFA);
+	ASSERT_EQ(packet.cell_id, 67);
+	ASSERT_EQ(packet.reg_addr, 0xBEEFBEFA);
+	char str_buf[BSPacket::kMaxPacketLen];
+	packet.ToString(str_buf);
+	ASSERT_STREQ(str_buf, "$BSSRD,67,BEEFBEFA*51");
+}
+
+TEST(SRDPacketConstructor, FromStringValid) {
+	char str_buf[BSPacket::kMaxPacketLen] = "$BSSRD,67,BEEFBEFA*51";
+	SRDPacket packet = SRDPacket(str_buf);
+	ASSERT_TRUE(packet.IsValid());
+	ASSERT_EQ(packet.cell_id, 67);
+	ASSERT_EQ(packet.reg_addr, 0xBEEFBEFA);
+}
+
+TEST(SRSPacketConstructor, ValuesToString) {
+	SRSPacket packet = SRSPacket(36, (char *)"test message 123");
+	ASSERT_EQ(packet.cell_id, 36);
+	ASSERT_STREQ(packet.value, "test message 123");
+	char str_buf[BSPacket::kMaxPacketLen];
+	packet.ToString(str_buf);
+	ASSERT_STREQ(str_buf, "$BSSRS,36,test message 123*0B");
+}
