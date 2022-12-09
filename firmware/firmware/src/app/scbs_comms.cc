@@ -58,7 +58,7 @@ void BSPacket::FromString(char from_str_buf[kMaxPacketLen]) {
     for (uint16_t i = 0; i < kNumPacketTypes; i++) { // excludes UNKNOWN type
         if (strcmp(header_str, BSPacket::packet_header_strs[i]) == 0) {
             packet_type_ = static_cast<PacketType_t>(i);
-            is_valid_ = true;
+            is_valid_ = true; // NOTE: Does not check number or type of fields for validity!
             return;
         }
     }

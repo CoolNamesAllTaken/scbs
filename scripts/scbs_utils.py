@@ -2,7 +2,7 @@ import argparse
 from ast import literal_eval
 import serial
 
-parser = argparse.ArgumentParser(description="SCBS master utilities.")
+parser = argparse.ArgumentParser(description="SCBS master utility.")
 parser.add_argument("serial_port", type=str, help="Serial port to use (e.g. 'COM3').")
 # parser.add_argument("command", type="str", help=
 # """
@@ -57,17 +57,20 @@ def send_dis():
 
 def main():
     print(
-"""Welcome to the SCBS Master utility!
+"""Welcome to the SCBS Master Utility!
 Supported Commands:
     DIS - Cell Discover
-        DIS <First Cell ID>
+        DIS <PREV_CELL_ID>
     MRD - Multi Read
-        MRD <Register Address>
+        MRD <REG_ADDR>
     MWR - Multi Write
-        MWR <Register Address> <Value>
-    SRD - Single Read*
-    SWR - Single Write*
-    SRS - Single Response*
+        MWR <REG_ADDR> <VALUE>
+    SRD - Single Read
+        SRD <CELL_ID> <REG_ADDR>
+    SWR - Single Write
+        SWR <CELL_ID> <REG_ADDR> <VALUE>
+    SRS - Single Response
+        SRS <CELL_ID> <VALUE>
 Type EXIT to quit."""
     )
     ser = serial.Serial(args.serial_port,
@@ -102,6 +105,24 @@ Type EXIT to quit."""
                 print("Invalid number of arguments for BSDIS! Excpected 2 but got {}.".format(num_args))
                 continue
             transmit(ser, packetize("BSMWR,{},{}".format(command_words[1], command_words[2])))
+            print("\tResponse: {}".format(ser.readline()))
+        elif command_words[0] == "SRD":
+            if (num_args != 3):
+                print("Invalid number of arguments for BSSRD! Expected 3 but got {}.".format(num_args))
+                continue
+            transmit(ser, packetize("BSSRD,{},{}".format(command_words[1], command_words[2])))
+            print("\tResponse: {}".format(ser.readline()))
+        elif command_words[0] == "SWR":
+            if (num_args != 4):
+                print("Invalid number of arguments for BSSRD! Expected 4 but got {}.".format(num_args))
+                continue
+            transmit(ser, packetize("BSSWR,{},{},{}".format(command_words[1], command_words[2], command_words[3])))
+            print("\tResponse: {}".format(ser.readline()))
+        elif command_words[0] == "SRS":
+            if (num_args != 3):
+                print("Invalid number of arguments for BSSRS! Expected 3 but got {}.".format(num_args))
+                continue
+            transmit(ser, packetize("BSSRS,{},{}".format(command_words[1], command_words[2])))
             print("\tResponse: {}".format(ser.readline()))
         else:
             print("Unrecognized argument.")

@@ -15,5 +15,5 @@ ser.close()
 ser.open()
 
 while (True):
-    transmit(ser, packetize("BSMWR,{},{}".format(1000, 2.5)))
+    transmit(ser, packetize("BSMRD,{}".format(2000)))
     print("\tResponse: {}".format(ser.readline()))
